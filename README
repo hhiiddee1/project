@@ -10,3 +10,22 @@ https://www.armoedefonds.nl
 
 solution
 a visualization of income inequality of europe.
+
+data sources:
+the world bank
+https://data.worldbank.org/indicator/SI.DST.05TH.20
+Income share held by highest 20%
+Income share held by second 20%
+Income share held by third 20%
+Income share held by fourth 20%
+Income share held by lowest 20%
+
+external components:
+python
+D3
+
+comparison with simelar soluctions:
+
+
+diffeculties:
+linking all components together
