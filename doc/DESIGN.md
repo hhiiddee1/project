@@ -21,3 +21,7 @@ The piechart will represent matching 20 percentiles of a year in a country. This
 
 4. dropdown menu
 In the dropdown menu a country can be selected. When a country is selected a piechart and linechart will be made.
+
+### APIs and D3 plugins
+* Datamaps
+* Boothstrap
