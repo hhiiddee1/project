@@ -3,13 +3,25 @@
   <head>
     <title>income inequality in europe</title>
     <script type="text/javascript" src="d3/d3.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
-    <script type="text/javascript" src="maps.js"></script>
-    <script type="text/javascript" src="piechart.js"></script>
-    <script type="text/javascript" src="linechart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script type="text/javascript" src="D3-tip.js"></script>
   </head>
   <body>
     <h1>My Website</h1>
     <p>A website created by me.</p>
-</body>
+    <div class="row">
+      <div class="col-sm-6" id="map">.col-sm-6</div>
+      <div class="col-sm-6" id="pie">.col-sm-6</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" id="line" >.col-sm-12</div>
+    </div>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="maps.js"></script>
+    <script type="text/javascript" src="piechart.js"></script>
+    <script type="text/javascript" src="linechart.js"></script>
+  </body>
 </html>

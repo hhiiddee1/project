@@ -1,26 +1,35 @@
 
 
 var world ="world_countries.json"
+var highest = "5th_20%(highest).json"
 
 window.onload = function() {
-  var request = d3.json(world)
-  Promise.resolve(request).then(function(d){
-    main(d);
+  var requests = [d3.json(world), d3.json(highest)]
+  Promise.all(requests).then(function(d){
+    world = d[0]
+    highest = d[1]
+    main(world, highest);
   }).catch(function(e){
     throw(e);
   });
 };
 
-function main (countries){
+function main (countries, highest){
+console.log(countries)
+console.log(highest)
 
   var format = d3.format(",");
+
 
   // Set tooltips
   var tip = d3.tip()
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d) {
-                return "<strong>Country: </strong><span class='details'>" + countries.properties.name + "<br></span>";
+                console.log(highest[d.id]);
+                var highestPercentage = highest[d.id]["2015"]
+                return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" +
+                        "<strong>Top 20%: </strong><span class='details'>" + highestPercentage + "</span>"
               })
 
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
@@ -33,18 +42,18 @@ function main (countries){
 
   var path = d3.geoPath();
 
-  var svg = d3.select("body")
+  var svg = d3.select("#map")
               .append("svg")
+              .attr('id', 'mapsvg')
               .attr("width", width)
               .attr("height", height)
               .append('g')
-              .attr('class', 'map');
-
   var projection = d3.geoMercator()
-                     .scale(450)
-                    .translate( [width / 2 - 50, height + 250]);
+                     .scale(440)
+                    .translate( [width / 2 - 50, height + 280]);
 
   var path = d3.geoPath().projection(projection);
+
 
   console.log(countries.features)
   svg.selectAll(".country")
@@ -54,5 +63,34 @@ function main (countries){
     .attr("d", path)
 
   svg.call(tip);
+  // console.log(countries.features.properties.name);
+  svg.append("g")
+      .attr("class", "countries")
+    .selectAll("path")
+      .data(countries.features)
+    .enter().append("path")
+      .attr("d", path)
+      .style("fill","red")
+      .style('stroke', 'white')
+      .style('stroke-width', 1.5)
+      .style("opacity",0.8)
+      // tooltips
+        .style("stroke","white")
+        .style('stroke-width', 0.3)
+        .on('mouseover',function(d){
+          tip.show(d);
 
+            d3.select(this)
+              .style("opacity", 1)
+              .style("stroke","white")
+              .style("stroke-width",3);
+          })
+          .on('mouseout', function(d){
+            tip.hide(d);
+
+            d3.select(this)
+              .style("opacity", 0.8)
+              .style("stroke","white")
+              .style("stroke-width",0.3);
+          });
 }
