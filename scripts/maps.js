@@ -1,22 +1,4 @@
-
-
-var world ="world_countries.json"
-var highest = "5th_20%(highest).json"
-
-window.onload = function() {
-  var requests = [d3.json(world), d3.json(highest)]
-  Promise.all(requests).then(function(d){
-    world = d[0]
-    highest = d[1]
-    main(world, highest);
-  }).catch(function(e){
-    throw(e);
-  });
-};
-
 function main (countries, highest){
-console.log(countries)
-console.log(highest)
 
   var format = d3.format(",");
 
@@ -26,7 +8,15 @@ console.log(highest)
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d) {
-                console.log(highest[d.id]);
+                console.log(d.id)
+                if (highest[d.id] == undefined){
+                  return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" +
+                          "<strong>Top 20%: </strong><span class='details'> No information </span>"
+                }
+                else if (highest[d.id]["2015"] == undefined){
+                return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" +
+                          "<strong>Top 20%: </strong><span class='details'> No information of this year</span>"
+                }
                 var highestPercentage = highest[d.id]["2015"]
                 return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" +
                         "<strong>Top 20%: </strong><span class='details'>" + highestPercentage + "</span>"
@@ -37,8 +27,8 @@ console.log(highest)
               height = 500 - margin.top - margin.bottom;
 
   var color = d3.scaleThreshold()
-      .domain([10000,100000,500000,1000000,5000000,10000000,50000000,100000000,500000000,1500000000])
-      .range(["rgb(247,251,255)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(8,48,107)","rgb(3,19,43)"]);
+      .domain([0,30,35,40,45,50])
+      .range(["rgb(247,251,255)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)"]);
 
   var path = d3.geoPath();
 
@@ -55,7 +45,6 @@ console.log(highest)
   var path = d3.geoPath().projection(projection);
 
 
-  console.log(countries.features)
   svg.selectAll(".country")
     .data(countries.features)
     .enter().append("path")
@@ -70,7 +59,15 @@ console.log(highest)
       .data(countries.features)
     .enter().append("path")
       .attr("d", path)
-      .style("fill","red")
+      .style("fill", function(d){
+        if (highest[d.id] == undefined){
+          return("black")
+        }
+        else if (highest[d.id]["2015"] == undefined){
+          return("red")
+        }
+        return(color(highest[d.id]["2015"]));
+      })
       .style('stroke', 'white')
       .style('stroke-width', 1.5)
       .style("opacity",0.8)
@@ -79,7 +76,6 @@ console.log(highest)
         .style('stroke-width', 0.3)
         .on('mouseover',function(d){
           tip.show(d);
-
             d3.select(this)
               .style("opacity", 1)
               .style("stroke","white")
