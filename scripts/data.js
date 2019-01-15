@@ -17,19 +17,9 @@ window.onload = function() {
     data2 = d[4]
     data1 = d[5]
 
-    var ned5 = d[1]["NLD"]["2015"]
-    var ned4 = d[2]["NLD"]["2015"]
-    var ned3 = d[3]["NLD"]["2015"]
-    var ned2 = d[4]["NLD"]["2015"]
-    var ned1 = d[5]["NLD"]["2015"]
-    ned.push(ned5)
-    ned.push(ned4)
-    ned.push(ned3)
-    ned.push(ned2)
-    ned.push(ned1)
-    console.log(ned)
-    makePieChart(ned)
-    makeLineChart(data5, data4, data3, data2, data1)
+
+    makePieChart(data5, data4, data3, data2, data1, "AUT")
+    makeLineChart(data5, data4, data3, data2, data1, "AUT")
 
     main(world, data5);
   }).catch(function(e){

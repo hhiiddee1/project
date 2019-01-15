@@ -27,7 +27,7 @@ var line = d3.line()
               .x(function(d) { return scaleXLine(d[0]-2000); })
               .y(function(d) { return scaleY(d[1]); });
 
-var svg3 = d3.select("#line")
+var svg3 = d3.select("#lineChartSvg")
             .append("svg")
             .attr("width", width)
             .attr("height", height)
@@ -60,7 +60,7 @@ svg3.append("text")
     .attr("y", 450)
     .attr("font-weight","bold");
 
-function makeLineChart(data5, data4, data3, data2, data1){
+function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
   // parses data for line and datapoints
 
@@ -68,7 +68,7 @@ function makeLineChart(data5, data4, data3, data2, data1){
   var dataLine5Parsed = []
 
   // selects country
-  dataLine5= data5["TUR"]
+  dataLine5= data5[countryID]
   // selects
   yearsData5 = Object.keys(dataLine5)
   for (i = 0; i < yearsData5.length; i++){
@@ -82,7 +82,7 @@ function makeLineChart(data5, data4, data3, data2, data1){
   var dataLine4Parsed = []
 
   // selects country
-  dataLine4= data4["TUR"]
+  dataLine4= data4[countryID]
   // selects
   yearsData4 = Object.keys(dataLine4)
   for (i = 0; i < yearsData4.length; i++){
@@ -96,7 +96,7 @@ function makeLineChart(data5, data4, data3, data2, data1){
   var dataLine3Parsed = []
 
   // selects country
-  dataLine3= data3["TUR"]
+  dataLine3= data3[countryID]
   // selects
   yearsData3 = Object.keys(dataLine3)
   for (i = 0; i < yearsData3.length; i++){
@@ -111,7 +111,7 @@ function makeLineChart(data5, data4, data3, data2, data1){
   var dataLine2Parsed = []
 
   // selects country
-  dataLine2= data2["TUR"]
+  dataLine2= data2[countryID]
   // selects
   yearsData2 = Object.keys(dataLine2)
   for (i = 0; i < yearsData2.length; i++){
@@ -121,11 +121,11 @@ function makeLineChart(data5, data4, data3, data2, data1){
     dataLine2Parsed.push(datacom)
   }
 
-  //selects data for dataset1
+  // selects data for dataset1
   var dataLine1Parsed = []
 
   // selects country
-  dataLine1= data1["TUR"]
+  dataLine1= data1[countryID]
   // selects
   yearsData1 = Object.keys(dataLine1)
   for (i = 0; i < yearsData1.length; i++){
@@ -134,6 +134,7 @@ function makeLineChart(data5, data4, data3, data2, data1){
     datacom.push(dataLine1[yearsData1[i]])
     dataLine1Parsed.push(datacom)
   }
+  console.log(dataLine5Parsed)
 
 
   // makes line for data 5

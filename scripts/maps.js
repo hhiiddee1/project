@@ -88,5 +88,13 @@ function main (countries, highest){
               .style("opacity", 0.8)
               .style("stroke","white")
               .style("stroke-width",0.3);
+          })
+          .on("click",function(d){
+            d3.selectAll("#dot").remove()
+            d3.selectAll("#line").remove()
+            d3.selectAll("#pie").remove()
+            countryID = d.id
+            makeLineChart(data5, data4, data3, data2, data1, countryID)
+            makePieChart(data5, data4, data3, data2, data1, countryID)
           });
 }
