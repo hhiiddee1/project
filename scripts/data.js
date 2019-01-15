@@ -29,6 +29,7 @@ window.onload = function() {
     ned.push(ned1)
     console.log(ned)
     makePieChart(ned)
+    makeLineChart(data5, data4, data3, data2, data1)
 
     main(world, data5);
   }).catch(function(e){

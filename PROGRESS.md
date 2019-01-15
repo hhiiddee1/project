@@ -7,3 +7,10 @@
 * made piechart
 * made linechart
 * made worldmap hover-on mode and improved it
+
+### Day 3
+* world map world map world map done
+
+### Day 4
+* own data in linechart
+* own data in piechart
