@@ -50,3 +50,6 @@ a line chart is more practical for that case.
 
 ### Diffeculties:
 linking all components together
+
+### Site:
+https://hhiiddee1.github.io/dataprocessing/homework/Week%206/Linked%20views.html
