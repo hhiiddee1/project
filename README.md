@@ -52,4 +52,4 @@ a line chart is more practical for that case.
 linking all components together
 
 ### Site:
-https://hhiiddee1.github.io/dataprocessing/project/data.html
+https://hhiiddee1.github.io/project/data.html
