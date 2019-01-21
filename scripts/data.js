@@ -1,8 +1,8 @@
-var world ="../json/world_countries.json"
-var five = "../json/5th_20%(highest).json"
-var four = "../json/4th_20%.json"
-var three = "../json/3rd_20%.json"
-var two = "../json/2nd_20%.json"
+var world ="https://raw.githubusercontent.com/hhiiddee1/project/master/json/world_countries.json"
+var five = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/5th_20%25(highest).json"
+var four = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/4th_20%25.json"
+var three = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/3rd_20%25.json"
+var two = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/2nd_20%25.json"
 var one = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/1st_20%25(lowest).json"
 var countrySelected = "AUT"
 var ned = []
