@@ -29,21 +29,32 @@ window.onload = function() {
       .on("click", function() {
         var countryID = this.getAttribute("value");
         var countrySelectedName = this.getAttribute("text");
-        console.log(this.textContent())
         d3.selectAll("#dot").remove()
         d3.selectAll("#line").remove()
         d3.selectAll(".arc").remove()
+        d3.selectAll("#noInfo").remove()
         d3.selectAll("#headTextPieChart")
           .text("Piechart of " + countrySelectedName + " in 2015")
         d3.selectAll("#headTextLineChart")
           .text(" Linechart of " + countrySelectedName + " over the years")
-        makeLineChart(data5, data4, data3, data2, data1, countryID)
-        makePieChart(data5, data4, data3, data2, data1, countryID, "2015")
-        countrySelected = countryID
-      })
+        if (data5[countryID] == undefined){
+          console.log("no info")
+          makeNoInfo()
+          makeNoInfoLine()
+        }
+        else if (data5[countryID]["2015"] == undefined){
+          console.log("no info year")
+          makeNoInfoYear()
+          makeLineChart(data5, data4, data3, data2, data1, countryID)
+        }
+        else{
+          makePieChart(data5, data4, data3, data2, data1, countryID, "2015")
+          makeLineChart(data5, data4, data3, data2, data1, countryID)
+        }
+      });
 
       var dataTime = d3.range(0, 16).map(function(d) {
-    return new Date(1999 + d, 16, 16);
+      return new Date(1999 + d, 16, 16);
   });
 
 // source: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518?fbclid=IwAR2lD_FwjdZXjnJ6_FNF1h3jfokYQjgzAXWsPfeOi1nPZmsRPS3d-k0xyjw

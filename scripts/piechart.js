@@ -69,7 +69,7 @@ function makePieChart(data5, data4, data3, data2, data1, countryID, year){
   dataPie.push(data12015)
   console.log(dataPie)
 
-  
+
   var g = svg2.selectAll(".arc")
               .attr("id", "pie")
               .data(pie(dataPie))
@@ -93,6 +93,20 @@ function makePieChart(data5, data4, data3, data2, data1, countryID, year){
     .text(function(d, i){
       return dataPie[i] + "%";
     })
+}
+
+function makeNoInfo(){
+  svg2.append("text")
+      .attr("id", "noInfo")
+      .text("No info of this country")
+      .attr("transform", "translate(-80, -70)")
+}
+
+function makeNoInfoYear(){
+  svg2.append("text")
+      .attr("id", "noInfo")
+      .text("No info of this country in this year")
+      .attr("transform", "translate(-100, -70)")
 }
 
 function updateBarChart(data5, data4, data3, data2, data1, countryID, year) {

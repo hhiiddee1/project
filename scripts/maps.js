@@ -93,13 +93,27 @@ function main (countries, highest){
             d3.selectAll("#dot").remove()
             d3.selectAll("#line").remove()
             d3.selectAll(".arc").remove()
+            d3.selectAll("#noInfo").remove()
             d3.selectAll("#headTextPieChart")
               .text("Piechart of " + d.properties.name + " in 2015")
             d3.selectAll("#headTextLineChart")
               .text(" Linechart of " + d.properties.name + " over the years")
             countrySelected = d.id
             countrySelectedName = d.properties.name
-            makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+            console.log(highest[countrySelected])
+            if (highest[countrySelected] == undefined){
+              console.log("no info")
+              makeNoInfo()
+              makeNoInfoLine()
+            }
+            else if (highest[countrySelected]["2015"] == undefined){
+              console.log("no info year")
+              makeNoInfoYear()
+              makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+            }
+            else {
             makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
+            makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+            }
           });
 }

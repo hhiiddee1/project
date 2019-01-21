@@ -417,3 +417,10 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
          d3.select(this).style("opacity", 1)
        });
 }
+
+function makeNoInfoLine(){
+  svg3.append("text")
+      .attr("id", "noInfo")
+      .text("No info of this country")
+      .attr("transform", "translate(400, 200)")
+}
