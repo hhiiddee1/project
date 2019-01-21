@@ -93,8 +93,8 @@ function main (countries, highest){
             d3.selectAll("#dot").remove()
             d3.selectAll("#line").remove()
             d3.selectAll("#pie").remove()
-            countryID = d.id
-            makeLineChart(data5, data4, data3, data2, data1, countryID)
-            makePieChart(data5, data4, data3, data2, data1, countryID)
+            countrySelected = d.id
+            makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+            makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
           });
 }

@@ -1,14 +1,15 @@
 var data = [30, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23]
-var color = ["rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)"]
+var legendNames = ["Highest 20%", "4th 20%", "3rd 20%", "2nd 20%", "Lowest 20%"]
 
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
-            width = 1000 - margin.left - margin.right,
+            width = 1200 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
+
 
 
 // makes Y scale
 var scaleY = d3.scaleLinear()
-                .domain([0, 50])
+                .domain([0, 100])
                 .range([300, 0]);
 
 // makes X scale
@@ -33,32 +34,69 @@ var svg3 = d3.select("#lineChartSvg")
             .attr("height", height)
             .attr('class', 'linechart');
 
+var tooltip = d3.select("#lineChartSvg").append("div")
+  .style("position","absolute")
+  .style("background","white")
+  .style("padding","5 10px")
+  .style("border-radius","5px")
+  .style("opacity","0");
+
 // create Y axis
 svg3.append("g")
     .attr("class", "y axis")
-    .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    .attr("transform", "translate(100, 50)")
     .call(d3.axisLeft(scaleY));
 
 // create X axis
 svg3.append("g")
     .attr("class", "y axis")
-    .attr("transform", "translate(" + 100 + "," + 400 + ")")
+    .attr("transform", "translate(100, 350)")
     .call(d3.axisBottom(scaleX));
 
 // makes text for Y axis
 svg3.append("text")
     .text("% of percentiles")
     .attr("transform", "rotate(-90)")
-    .attr("x", -330)
+    .attr("x", -230)
     .attr("y", 50)
     .attr("font-weight","bold");
 
 // makes text for X axis
 svg3.append("text")
     .text("Year")
-    .attr("x", 400)
-    .attr("y", 450)
+    .attr("x", 450)
+    .attr("y", 400)
     .attr("font-weight","bold");
+
+svg3.selectAll("textlegend")
+  .data(legendNames)
+  .enter()
+  .append("text")
+  .text(function(d) {
+    return d;
+  })
+  .attr("x", function(d) {
+    return 980;
+  })
+  .attr("y", function(d, i) {
+    return i * 20 + 163;
+  })
+
+svg3.selectAll("rect")
+    .data(legendNames)
+    .enter()
+    .append("rect")
+    .attr("width", 20 )
+    .attr("height", 20 - padding)
+    .attr("x", function(d) {
+      return 950;
+    })
+    .attr("y", function(d, i) {
+      return i * 20 + 150;
+    })
+    .style("fill", function(d, i){
+      return color[i]
+    })
 
 function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
@@ -145,7 +183,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
       .attr("id", "line")
       .style("stroke", color[0])
       .style("stroke-width", 3)
-      .attr("transform", "translate(100, 100)");
+      .attr("transform", "translate(100, 50)");
 
 
   // makes circels for data 5
@@ -164,7 +202,26 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
      .attr("r", function(d) {
        return 5
      })
-     .attr("transform", "translate(100, 100)")
+     .attr("transform", "translate(100, 50)")
+     // makes text appear when hovering over
+    .on("mouseover", function(d,i){
+      tooltip.transition()
+        .style("opacity", 1)
+
+        tooltip.html(d,i)
+          .text(d[1] + "%")
+          .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+          .style("top",(scaleY(d[1]))+"px")
+          .style("border","2px " + color[0] + " solid")
+
+          d3.select(this).style("opacity", 1)
+      })
+      // makes text go away when hovering over
+      .on("mouseout", function(d){
+        tooltip.transition()
+            .style("opacity", 0)
+        d3.select(this).style("opacity", 1)
+      });
 
 
   // makes line for data 4
@@ -175,7 +232,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
       .attr("id", "line")
       .style("stroke", color[1])
       .style("stroke-width", 3)
-      .attr("transform", "translate(100, 100)");
+      .attr("transform", "translate(100, 50)");
 
 
   // makes circels for data 4
@@ -194,7 +251,26 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
      .attr("r", function(d) {
        return 5
      })
-     .attr("transform", "translate(100, 100)")
+     .attr("transform", "translate(100, 50)")
+    // makes text appear when hovering over
+     .on("mouseover", function(d,i){
+       tooltip.transition()
+         .style("opacity", 1)
+
+       tooltip.html(d,i)
+         .text(d[1] + "%")
+         .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+         .style("top",(scaleY(d[1]))+"px")
+         .style("border","2px " + color[1] + " solid")
+
+         d3.select(this).style("opacity", 1)
+     })
+     // makes text go away when hovering over
+     .on("mouseout", function(d){
+       tooltip.transition()
+           .style("opacity", 0)
+       d3.select(this).style("opacity", 1)
+     });
 
 
   // makes line for data 3
@@ -205,7 +281,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
       .attr("id", "line")
       .style("stroke", color[2])
       .style("stroke-width", 3)
-      .attr("transform", "translate(100, 100)");
+      .attr("transform", "translate(100, 50)");
 
 
   // makes circels for data 3
@@ -224,8 +300,26 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
      .attr("r", function(d) {
        return 5
      })
-     .attr("transform", "translate(100, 100)")
+     .attr("transform", "translate(100, 50)")
+     // makes text appear when hovering over
+    .on("mouseover", function(d,i){
+      tooltip.transition()
+        .style("opacity", 1)
 
+        tooltip.html(d,i)
+          .text(d[1] + "%")
+          .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+          .style("top",(scaleY(d[1]))+"px")
+          .style("border","2px " + color[2] + " solid")
+
+          d3.select(this).style("opacity", 1)
+      })
+      // makes text go away when hovering over
+      .on("mouseout", function(d){
+        tooltip.transition()
+            .style("opacity", 0)
+        d3.select(this).style("opacity", 1)
+      });
 
    // makes line for data 2
    svg3.append("path")
@@ -235,7 +329,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
        .attr("id", "line")
        .style("stroke", color[3])
        .style("stroke-width", 3)
-       .attr("transform", "translate(100, 100)");
+       .attr("transform", "translate(100, 50)");
 
 
    // makes circels for data 2
@@ -254,8 +348,26 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
       .attr("r", function(d) {
         return 5
       })
-      .attr("transform", "translate(100, 100)")
+      .attr("transform", "translate(100, 50)")
+      // makes text appear when hovering over
+     .on("mouseover", function(d,i){
+       tooltip.transition()
+         .style("opacity", 1)
 
+         tooltip.html(d,i)
+           .text(d[1] + "%")
+           .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+           .style("top",(scaleY(d[1]))+"px")
+           .style("border","2px " + color[3] + " solid")
+
+           d3.select(this).style("opacity", 1)
+       })
+       // makes text go away when hovering over
+       .on("mouseout", function(d){
+         tooltip.transition()
+             .style("opacity", 0)
+         d3.select(this).style("opacity", 1)
+       });
 
    // makes line for data 1
    svg3.append("path")
@@ -265,7 +377,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
        .attr("id", "line")
        .style("stroke", color[4])
        .style("stroke-width", 3)
-       .attr("transform", "translate(100, 100)");
+       .attr("transform", "translate(100, 50)");
 
 
    // makes circels for data 1
@@ -284,5 +396,24 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
       .attr("r", function(d) {
         return 5
       })
-      .attr("transform", "translate(100, 100)")
+      .attr("transform", "translate(100, 50)")
+      // makes text appear when hovering over
+     .on("mouseover", function(d,i){
+       tooltip.transition()
+         .style("opacity", 1)
+
+         tooltip.html(d,i)
+           .text(d[1] + "%")
+           .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+           .style("top",(scaleY(d[1]))+"px")
+           .style("border","2px " + color[4] + " solid")
+
+           d3.select(this).style("opacity", 1)
+       })
+       // makes text go away when hovering over
+       .on("mouseout", function(d){
+         tooltip.transition()
+             .style("opacity", 0)
+         d3.select(this).style("opacity", 1)
+       });
 }

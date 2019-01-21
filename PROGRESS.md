@@ -18,3 +18,7 @@
 ### Day 5
 * interactive between Visualisation
 * Bootstrap navbar
+
+### Day 6
+* other pages
+* css with different titles

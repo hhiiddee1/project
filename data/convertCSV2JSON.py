@@ -94,9 +94,9 @@ def main():
 
 def make_country(row, dict):
     dict_temp = {}
-    year = 1960
-    indicator = 1
-    while year != 2018:
+    year = 2000
+    indicator = 41
+    while year != 2016:
         if row[None][indicator] != "":
             dict_temp[year] = float(row[None][indicator])
         year += 1

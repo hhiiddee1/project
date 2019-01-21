@@ -18,3 +18,11 @@
   margin-bottom: 20px;
   color: gray;
 }
+
+#map {
+  text-align: center;
+}
+
+#pieChartSvg {
+  text-align: center;
+}
