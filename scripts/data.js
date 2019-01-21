@@ -3,7 +3,7 @@ var five = "../json/5th_20%(highest).json"
 var four = "../json/4th_20%.json"
 var three = "../json/3rd_20%.json"
 var two = "../json/2nd_20%.json"
-var one = "../json/1st_20%(lowest).json"
+var one = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/1st_20%25(lowest).json"
 var countrySelected = "AUT"
 var ned = []
 var color = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "rgb(198,219,239)","rgb(222,235,247)"]
@@ -29,7 +29,7 @@ window.onload = function() {
         var countryID = this.getAttribute("value");
         d3.selectAll("#dot").remove()
         d3.selectAll("#line").remove()
-        d3.selectAll("#pie").remove()
+        d3.selectAll(".arc").remove()
         makeLineChart(data5, data4, data3, data2, data1, countryID)
         makePieChart(data5, data4, data3, data2, data1, countryID, "2015")
         countrySelected = countryID
@@ -51,7 +51,7 @@ window.onload = function() {
     .default(new Date(2000, 16, 3))
     .on('onchange', val => {
       d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-      d3.selectAll("#pie").remove()
+      d3.selectAll(".arc").remove()
       makePieChart(data5, data4, data3, data2, data1, countrySelected, d3.timeFormat('%Y')(val))
     });
 

@@ -69,7 +69,7 @@ function makePieChart(data5, data4, data3, data2, data1, countryID, year){
   dataPie.push(data12015)
   console.log(dataPie)
 
-
+  
   var g = svg2.selectAll(".arc")
               .attr("id", "pie")
               .data(pie(dataPie))

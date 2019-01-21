@@ -14,12 +14,12 @@ var scaleY = d3.scaleLinear()
 
 // makes X scale
 var scaleX = d3.scaleLinear()
-                .domain([2000,2016])
+                .domain([2000,2015])
                 .range([0, 800]);
 
   // makes X line scale
   var scaleXLine = d3.scaleLinear()
-                  .domain([0, 16])
+                  .domain([0, 15])
                   .range([0, 800]);
 
 
