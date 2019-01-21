@@ -22,3 +22,18 @@
 ### Day 6
 * other pages
 * css with different titles
+
+### Day 7
+* improvement on interactivity between Visualisations
+* Better looking pages
+
+### Day 8
+* introduction of a dropdown menu
+* introduction of a slider
+* new elements interact with visualisations
+
+### Day 9
+* major inprovement on interaction between visualisations
+* Updated color template of visualitation
+* improved tooltip for linechart
+* made site compatible with github pages

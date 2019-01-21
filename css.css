@@ -5,7 +5,19 @@
   margin-bottom: 20px;
 }
 
-#headtext {
+#headText {
+  text-align: center;
+  color: gray;
+  font-size: 36px;
+}
+
+#headTextPieChart {
+  text-align: center;
+  color: gray;
+  font-size: 36px;
+}
+
+#headTextLineChart {
   text-align: center;
   color: gray;
   font-size: 36px;
@@ -24,5 +36,9 @@
 }
 
 #pieChartSvg {
+  text-align: center;
+}
+
+#lineChartSvg {
   text-align: center;
 }

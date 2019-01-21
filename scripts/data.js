@@ -5,6 +5,7 @@ var three = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/3rd
 var two = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/2nd_20%25.json"
 var one = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/1st_20%25(lowest).json"
 var countrySelected = "AUT"
+var countrySelectedName = "AUT"
 var ned = []
 var color = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "rgb(198,219,239)","rgb(222,235,247)"]
 
@@ -27,16 +28,22 @@ window.onload = function() {
     d3.selectAll(".m")
       .on("click", function() {
         var countryID = this.getAttribute("value");
+        var countrySelectedName = this.getAttribute("text");
+        console.log(this.textContent())
         d3.selectAll("#dot").remove()
         d3.selectAll("#line").remove()
         d3.selectAll(".arc").remove()
+        d3.selectAll("#headTextPieChart")
+          .text("Piechart of " + countrySelectedName + " in 2015")
+        d3.selectAll("#headTextLineChart")
+          .text(" Linechart of " + countrySelectedName + " over the years")
         makeLineChart(data5, data4, data3, data2, data1, countryID)
         makePieChart(data5, data4, data3, data2, data1, countryID, "2015")
         countrySelected = countryID
       })
 
       var dataTime = d3.range(0, 16).map(function(d) {
-    return new Date(1999 + d, 16, 3);
+    return new Date(1999 + d, 16, 16);
   });
 
 // source: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518?fbclid=IwAR2lD_FwjdZXjnJ6_FNF1h3jfokYQjgzAXWsPfeOi1nPZmsRPS3d-k0xyjw

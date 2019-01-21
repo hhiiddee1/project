@@ -93,8 +93,13 @@ function main (countries, highest){
             d3.selectAll("#dot").remove()
             d3.selectAll("#line").remove()
             d3.selectAll(".arc").remove()
+            d3.selectAll("#headTextPieChart")
+              .text("Piechart of " + d.properties.name + " in 2015")
+            d3.selectAll("#headTextLineChart")
+              .text(" Linechart of " + d.properties.name + " over the years")
             countrySelected = d.id
-          makeLineChart(data5, data4, data3, data2, data1, countrySelected)
-          makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
+            countrySelectedName = d.properties.name
+            makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+            makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
           });
 }
