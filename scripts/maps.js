@@ -94,6 +94,8 @@ function main (countries, highest){
             d3.selectAll("#line").remove()
             d3.selectAll(".arc").remove()
             d3.selectAll("#noInfo").remove()
+            d3.selectAll("#slider").remove()
+            makeSlider()
             d3.selectAll("#headTextPieChart")
               .text("Piechart of " + d.properties.name + " in 2015")
             d3.selectAll("#headTextLineChart")

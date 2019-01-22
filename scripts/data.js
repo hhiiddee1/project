@@ -5,9 +5,13 @@ var three = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/3rd
 var two = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/2nd_20%25.json"
 var one = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/1st_20%25(lowest).json"
 var countrySelected = "AUT"
-var countrySelectedName = "AUT"
+var countrySelectedName = "Austria"
 var ned = []
 var color = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "rgb(198,219,239)","rgb(222,235,247)"]
+
+var dataTime = d3.range(0, 16).map(function(d) {
+return new Date(1999 + d, 16, 16);
+});
 
 window.onload = function() {
   var requests = [d3.json(world), d3.json(five), d3.json(four), d3.json(three), d3.json(two), d3.json(one)]
@@ -21,14 +25,15 @@ window.onload = function() {
 
 
     makePieChart(data5, data4, data3, data2, data1, "AUT", "2015")
+
     makeLineChart(data5, data4, data3, data2, data1, "AUT")
 
     main(world, data5);
 
     d3.selectAll(".m")
       .on("click", function() {
-        var countryID = this.getAttribute("value");
-        var countrySelectedName = this.getAttribute("text");
+        countrySelected = this.getAttribute("value");
+        var countrySelectedName = this.innerHTML;
         d3.selectAll("#dot").remove()
         d3.selectAll("#line").remove()
         d3.selectAll(".arc").remove()
@@ -37,26 +42,35 @@ window.onload = function() {
           .text("Piechart of " + countrySelectedName + " in 2015")
         d3.selectAll("#headTextLineChart")
           .text(" Linechart of " + countrySelectedName + " over the years")
-        if (data5[countryID] == undefined){
+
+        d3.selectAll("#slider").remove()
+        makeSlider()
+        if (data5[countrySelected] == undefined){
           console.log("no info")
           makeNoInfo()
           makeNoInfoLine()
         }
-        else if (data5[countryID]["2015"] == undefined){
+        else if (data5[countrySelected]["2015"] == undefined){
           console.log("no info year")
           makeNoInfoYear()
-          makeLineChart(data5, data4, data3, data2, data1, countryID)
+          makeLineChart(data5, data4, data3, data2, data1, countrySelected)
         }
         else{
-          makePieChart(data5, data4, data3, data2, data1, countryID, "2015")
-          makeLineChart(data5, data4, data3, data2, data1, countryID)
+          makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
+          makeLineChart(data5, data4, data3, data2, data1, countrySelected)
         }
       });
 
-      var dataTime = d3.range(0, 16).map(function(d) {
-      return new Date(1999 + d, 16, 16);
-  });
 
+      makeSlider()
+
+  }).catch(function(e){
+    throw(e);
+  });
+};
+
+function makeSlider(){
+  console.log(123);
 // source: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518?fbclid=IwAR2lD_FwjdZXjnJ6_FNF1h3jfokYQjgzAXWsPfeOi1nPZmsRPS3d-k0xyjw
   var sliderTime = d3
     .sliderBottom()
@@ -66,16 +80,31 @@ window.onload = function() {
     .width(500)
     .tickFormat(d3.timeFormat('%Y'))
     .tickValues(dataTime)
-    .default(new Date(2000, 16, 3))
+    .default(new Date(2014, 16, 3))
     .on('onchange', val => {
       d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
       d3.selectAll(".arc").remove()
-      makePieChart(data5, data4, data3, data2, data1, countrySelected, d3.timeFormat('%Y')(val))
+      d3.selectAll("#noInfo").remove()
+      d3.selectAll("#headTextPieChart")
+        .text("Piechart of " + countrySelectedName + " in " + d3.timeFormat('%Y')(val))
+      if (data5[countrySelected] == undefined){
+        console.log("no info")
+        makeNoInfo()
+        makeNoInfoLine()
+      }
+      else if (data5[countrySelected][d3.timeFormat('%Y')(val)] == undefined){
+        console.log("no info year")
+        makeNoInfoYear()
+      }
+      else {
+        makePieChart(data5, data4, data3, data2, data1, countrySelected, d3.timeFormat('%Y')(val))
+      }
     });
 
   var timeSliderSvg = d3
     .select('div#slider-time')
     .append('svg')
+    .attr("id", "slider")
     .attr('width', 600)
     .attr('height', 100)
     .append('g')
@@ -84,8 +113,4 @@ window.onload = function() {
   timeSliderSvg.call(sliderTime);
 
   d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
-
-  }).catch(function(e){
-    throw(e);
-  });
-};
+}

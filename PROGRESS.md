@@ -37,3 +37,6 @@
 * Updated color template of visualitation
 * improved tooltip for linechart
 * made site compatible with github pages
+
+### Day 10
+* VISUALISATION FULLY FUNCTIONAL
