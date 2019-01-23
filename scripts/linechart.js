@@ -1,6 +1,7 @@
-var data = [30, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23, 25, 23]
+
 var legendNames = ["Highest 20%", "4th 20%", "3rd 20%", "2nd 20%", "Lowest 20%"]
 
+// makes margin, width and height
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
             width = 1200 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
@@ -28,12 +29,14 @@ var line = d3.line()
               .x(function(d) { return scaleXLine(d[0]-2000); })
               .y(function(d) { return scaleY(d[1]); });
 
+// creates svg
 var svg3 = d3.select("#lineChartSvg")
             .append("svg")
             .attr("width", width)
             .attr("height", height)
             .attr('class', 'linechart');
 
+// creates tooltip
 var tooltip = d3.select("#lineChartSvg").append("div")
   .style("position","absolute")
   .style("background","white")
@@ -68,6 +71,7 @@ svg3.append("text")
     .attr("y", 400)
     .attr("font-weight","bold");
 
+// adds text for legend
 svg3.selectAll("textlegend")
   .data(legendNames)
   .enter()
@@ -82,6 +86,7 @@ svg3.selectAll("textlegend")
     return i * 20 + 163;
   })
 
+// adds rectangles for legend
 svg3.selectAll("rect")
     .data(legendNames)
     .enter()
@@ -98,6 +103,7 @@ svg3.selectAll("rect")
       return color[i]
     })
 
+// function for making linechart
 function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
   // parses data for line and datapoints
@@ -107,7 +113,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
   // selects country
   dataLine5= data5[countryID]
-  // selects
+  // selects data of country
   yearsData5 = Object.keys(dataLine5)
   for (i = 0; i < yearsData5.length; i++){
     datacom = []
@@ -121,7 +127,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
   // selects country
   dataLine4= data4[countryID]
-  // selects
+  // selects of country
   yearsData4 = Object.keys(dataLine4)
   for (i = 0; i < yearsData4.length; i++){
     datacom = []
@@ -135,7 +141,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
   // selects country
   dataLine3= data3[countryID]
-  // selects
+  // selects of country
   yearsData3 = Object.keys(dataLine3)
   for (i = 0; i < yearsData3.length; i++){
     datacom = []
@@ -150,7 +156,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
   // selects country
   dataLine2= data2[countryID]
-  // selects
+  // selects of country
   yearsData2 = Object.keys(dataLine2)
   for (i = 0; i < yearsData2.length; i++){
     datacom = []
@@ -164,7 +170,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
   // selects country
   dataLine1= data1[countryID]
-  // selects
+  // selects of country
   yearsData1 = Object.keys(dataLine1)
   for (i = 0; i < yearsData1.length; i++){
     datacom = []
@@ -418,6 +424,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
        });
 }
 
+// function for making text when a country has no data
 function makeNoInfoLine(){
   svg3.append("text")
       .attr("id", "noInfo")
