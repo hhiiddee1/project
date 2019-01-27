@@ -60,12 +60,10 @@ window.onload = function() {
 
         //selects right country state and adds new elements
         if (data5[countrySelected] == undefined){
-          console.log("no info")
           makeNoInfo()
           makeNoInfoLine()
         }
         else if (data5[countrySelected]["2015"] == undefined){
-          console.log("no info year")
           makeNoInfoYear()
           makeLineChart(data5, data4, data3, data2, data1, countrySelected)
         }
@@ -103,12 +101,10 @@ function makeSlider(){
       d3.selectAll("#headTextPieChart")
         .text("Piechart of " + countrySelectedName + " in " + d3.timeFormat('%Y')(val))
       if (data5[countrySelected] == undefined){
-        console.log("no info")
         makeNoInfo()
         makeNoInfoLine()
       }
       else if (data5[countrySelected][d3.timeFormat('%Y')(val)] == undefined){
-        console.log("no info year")
         makeNoInfoYear()
       }
       else {

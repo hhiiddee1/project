@@ -16,7 +16,6 @@ function makeDataMap (countries, highest){
               .style("opacity","0")
               .style("border", "2px steelblue solid")
               .html(function(d) {
-                console.log(d.id)
                 if (highest[d.id] == undefined){
                   return "<strong>Country: </strong><span class='details'>" + d.properties.name + " <br></span>" +
                           "<strong>Top 20%: </strong><span class='details'> No information </span>"
@@ -144,14 +143,11 @@ svg.selectAll("rect")
               .text(" Linechart of " + d.properties.name + " over the years")
             countrySelected = d.id
             countrySelectedName = d.properties.name
-            console.log(highest[countrySelected])
             if (highest[countrySelected] == undefined){
-              console.log("no info")
               makeNoInfo()
               makeNoInfoLine()
             }
             else if (highest[countrySelected]["2015"] == undefined){
-              console.log("no info year")
               makeNoInfoYear()
               makeLineChart(data5, data4, data3, data2, data1, countrySelected)
             }

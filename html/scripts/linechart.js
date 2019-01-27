@@ -149,7 +149,6 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
     datacom.push(dataLine3[yearsData3[i]])
     dataLine3Parsed.push(datacom)
   }
-  console.log(dataLine5Parsed)
 
   //selects data for dataset2
   var dataLine2Parsed = []
@@ -178,7 +177,6 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
     datacom.push(dataLine1[yearsData1[i]])
     dataLine1Parsed.push(datacom)
   }
-  console.log(dataLine5Parsed)
 
 
   // makes line for data 5
