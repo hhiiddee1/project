@@ -5,6 +5,7 @@ import json
 
 def main():
     dict = {}
+    # selects correct file
     name = "5th_20%(highest)"
 
     # reads data from csvfile
