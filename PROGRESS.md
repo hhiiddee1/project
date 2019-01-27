@@ -1,42 +1,52 @@
 ### Day 1
-* made html page
-* made svg's
-* made worldmap
+* Made html page
+* Made svg's
+* Made worldmap
 
 ### Day 2
-* made piechart
-* made linechart
-* made worldmap hover-on mode and improved it
+* Made piechart
+* Made linechart
+* Made worldmap hover-on mode and improved it
 
 ### Day 3
-* world map world map world map done
+* World map world map world map done
 
 ### Day 4
-* own data in linechart
-* own data in piechart
+* Own data in linechart
+* Own data in piechart
 
 ### Day 5
-* interactive between Visualisation
+* Interactive between Visualisation
 * Bootstrap navbar
 
 ### Day 6
-* other pages
-* css with different titles
+* Other pages
+* CSS with different titles
 
 ### Day 7
-* improvement on interactivity between Visualisations
+* Improvement on interactivity between Visualisations
 * Better looking pages
 
 ### Day 8
-* introduction of a dropdown menu
-* introduction of a slider
-* new elements interact with visualisations
+* Introduction of a dropdown menu
+* Introduction of a slider
+* New elements interact with visualisations
 
 ### Day 9
-* major inprovement on interaction between visualisations
+* Major inprovement on interaction between visualisations
 * Updated color template of visualitation
-* improved tooltip for linechart
-* made site compatible with github pages
+* Improved tooltip for linechart
+* Made site compatible with github pages
 
 ### Day 10
 * VISUALISATION FULLY FUNCTIONAL
+
+### Day 11
+* Added dropdown to navbar
+* Added all countries to dropdown
+* Added legend for map
+
+### Day 12
+* Made site fully compatible for github pages
+
+### Day 13
