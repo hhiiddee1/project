@@ -62,7 +62,7 @@ svg3.append("g")
 svg3.append("text")
     .text("Income held by different income groups%")
     .attr("transform", "rotate(-90)")
-    .attr("x", -230)
+    .attr("x", -330)
     .attr("y", 50)
     .attr("font-weight","bold");
 
