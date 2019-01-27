@@ -1,3 +1,6 @@
+// Name: Hidde van Oijen
+// Student Number: 12451096
+
 var legendNamesMap = ["Top 20% > 45%", "Top 20% = 40 - 45%", "Top 20% < 40%", "No info of 2015", "No info"]
 var colorMapLegend = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "red", "black"]
 function makeDataMap (countries, highest){

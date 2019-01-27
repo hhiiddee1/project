@@ -1,3 +1,6 @@
+// Name: Hidde van Oijen
+// Student Number: 12451096
+
 // collects all data
 var world ="https://raw.githubusercontent.com/hhiiddee1/project/master/json/world_countries.json"
 var five = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/5th_20%25(highest).json"

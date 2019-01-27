@@ -1,3 +1,5 @@
+// Name: Hidde van Oijen
+// Student Number: 12451096
 
 var legendNames = ["Highest 20%", "4th 20%", "3rd 20%", "2nd 20%", "Lowest 20%"]
 
