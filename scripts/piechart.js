@@ -1,7 +1,7 @@
 var legendNames = ["Highest 20%", "4th 20%", "3rd 20%", "2nd 20%", "Lowest 20%"]
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
-            width = 500 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            width = 400 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
             radius = width / 2;
 
 var padding = 5;

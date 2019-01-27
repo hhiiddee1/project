@@ -1,3 +1,5 @@
+var legendNamesMap = ["Top 20% > 45%", "Top 20% = 40 - 45%", "Top 20% < 40%", "No info of 2015", "No info"]
+var colorMapLegend = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "red", "black"]
 function makeDataMap (countries, highest){
 
   var format = d3.format(",");
@@ -7,25 +9,31 @@ function makeDataMap (countries, highest){
   var tip = d3.tip()
               .attr('class', 'd3-tip')
               .offset([-10, 0])
+              .style("position","absolute")
+              .style("background","white")
+              .style("padding","5 10px")
+              .style("border-radius","5px")
+              .style("opacity","0")
+              .style("border", "2px steelblue solid")
               .html(function(d) {
                 console.log(d.id)
                 if (highest[d.id] == undefined){
-                  return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" +
+                  return "<strong>Country: </strong><span class='details'>" + d.properties.name + " <br></span>" +
                           "<strong>Top 20%: </strong><span class='details'> No information </span>"
                 }
                 else if (highest[d.id]["2015"] == undefined){
-                return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" +
-                          "<strong>Top 20%: </strong><span class='details'> No information of this year</span>"
+                return "<strong>Country: </strong><span class='details'>" + d.properties.name + " <br></span>" +
+                          "<strong>Top 20%: </strong><span class='details'> No information of 2015 </span>"
                 }
                 var highestPercentage = highest[d.id]["2015"]
-                return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" +
+                return "<strong>Country: </strong><span class='details'>" + d.properties.name + " <br></span>" +
                         "<strong>Top 20%: </strong><span class='details'>" + highestPercentage + "</span>"
               })
 
   // makes width and height with margins
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
               width = 500 - margin.left - margin.right,
-              height = 500 - margin.top - margin.bottom;
+              height = 400 - margin.top - margin.bottom;
 
   // makes colors for countries
   var color = d3.scaleThreshold()
@@ -40,10 +48,40 @@ function makeDataMap (countries, highest){
               .attr("height", height)
               .append('g')
 
+svg.selectAll("textlegend")
+  .data(legendNamesMap)
+  .enter()
+  .append("text")
+  .text(function(d) {
+    return d;
+  })
+  .attr("x", function(d) {
+    return 60;
+  })
+  .attr("y", function(d, i) {
+    return i * 20 + 263;
+  })
+
+svg.selectAll("rect")
+    .data(legendNamesMap)
+    .enter()
+    .append("rect")
+    .attr("width", 20 )
+    .attr("height", 20 - padding)
+    .attr("x", function(d) {
+      return 30;
+    })
+    .attr("y", function(d, i) {
+      return i * 20 + 250;
+    })
+    .style("fill", function(d, i){
+      return colorMapLegend[i]
+    })
+
 
   var projection = d3.geoMercator()
-                     .scale(440)
-                    .translate( [width / 2 - 50, height + 280]);
+                     .scale(350)
+                    .translate( [width / 2 + 20, height + 210]);
 
   var path = d3.geoPath().projection(projection);
 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- https://www.freefavicon.com/freefavicons/business/iconinfo/money-wads-152-170057.html -->
+    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+    <title>income inequality in europe</title>
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script type="text/javascript" src="D3-tip.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider/build/d3-simple-slider.js"></script>
+    <link rel="stylesheet" href="css.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Income inequality</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-item nav-link" href="http://localhost:8080/home.html"><span class="glyphicon glyphicon-envelope"></span> Home </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-item nav-link active" href="http://localhost:8080/data.html">Visualisation<span class="sr-only">(current)</span></a>
+          </li>
+          <li>
+            <a class="nav-item nav-link" href="http://localhost:8080/story.html">Story</a>
+          </li>
+          <li>
+            <a class="nav-item nav-link" href="http://localhost:8080/conclusion.html">Conclusion</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Country
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <div><a class="m" value="AUT" href="#">Austria</a></div>
+              <div><a class="m" value="BEL" href="#">Belgium</a></div>
+              <div><a class="m" value="BIH" href="#">Bosnia and Herzegovina</a></div>
+              <div><a class="m" value="BGR" href="#">Bulgaria</a></div>
+              <div><a class="m" value="HRV" href="#">Croatia</a></div>
+              <div><a class="m" value="CYP" href="#">Cyprus</a></div>
+              <div><a class="m" value="CZE" href="#">Czech Repubdivc</a></div>
+              <div><a class="m" value="DNK" href="#">Denmark</a></div>
+              <div><a class="m" value="EST" href="#">Estonia</a></div>
+              <div><a class="m" value="FIN" href="#">Finland</a></div>
+              <div><a class="m" value="FRA" href="#">France</a></div>
+              <div><a class="m" value="DEU" href="#">Germany</a></div>
+              <div><a class="m" value="GRC" href="#">Greece</a></div>
+              <div><a class="m" value="HUN" href="#">Hungary</a></div>
+              <div><a class="m" value="ISL" href="#">Iceland</a></div>
+              <div><a class="m" value="IRL" href="#">Ireland</a></div>
+              <div><a class="m" value="ITA" href="#">Italy</a></div>
+              <div><a class="m" value="LVA" href="#">Latvia</a></div>
+              <div><a class="m" value="LTU" href="#">Lithuania</a></div>
+              <div><a class="m" value="LUX" href="#">Luxembourg</a></div>
+              <div><a class="m" value="MKD" href="#">Macedonia</a></div>
+              <div><a class="m" value="MDA" href="#">Moldova</a></div>
+              <div><a class="m" value="MNE" href="#">Montenegro</a></div>
+              <div><a class="m" value="NLD" href="#">The Netherlands</a></div>
+              <div><a class="m" value="NOR" href="#">Norway</a></div>
+              <div><a class="m" value="PRT" href="#">Portugal</a></div>
+              <div><a class="m" value="ROU" href="#">Romania</a></div>
+              <div><a class="m" value="RUS" href="#">Russia</a></div>
+              <div><a class="m" value="SVK" href="#">Slovakia</a></div>
+              <div><a class="m" value="SVN" href="#">Slovenia</a></div>
+              <div><a class="m" value="ESP" href="#">Spain</a></div>
+              <div><a class="m" value="SWE" href="#">Sweden</a></div>
+              <div><a class="m" value="CHE" href="#">Switzerland</a></div>
+              <div><a class="m" value="TUR" href="#">Turkey</a></div>
+              <div><a class="m" value="UKR" href="#">Ukraine</a></div>
+              <div><a class="m" value="GBR" href="#">United Kingdom</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row">
+      <div class="col-sm-12" id="titel"> Visualisation </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6" id="headText"> Map of europe </div>
+      <div class="col-sm-6" id="headTextPieChart"> Piechart of Austria in 2015 </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6" id="map"></div>
+      <div class="col-sm-6" id="pieChartSvg"></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-sm-2"></p></div>
+      <div class="col-sm-1"><p id="value-time"></p></div>
+      <div class="col-sm"><div id="slider-time"></div></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" id="headTextLineChart"> Linechart of Austria over the years</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" id="lineChartSvg" ></div>
+    </div>
+    <script type="text/javascript" src="scripts/data.js"></script>
+    <script type="text/javascript" src="scripts/maps.js"></script>
+    <script type="text/javascript" src="scripts/piechart.js"></script>
+    <script type="text/javascript" src="scripts/linechart.js"></script>
+  </body>
+</html>
