@@ -44,7 +44,8 @@ var tooltip = d3.select("#lineChartSvg").append("div")
                 .style("background","white")
                 .style("padding","5 10px")
                 .style("border-radius","5px")
-                .style("opacity","0");
+                .style("opacity","0")
+                .attr("transform", "translate(100, 50)");
 
 // create Y axis
 svg3.append("g")
