@@ -50,3 +50,5 @@
 * Made site fully compatible for github pages
 
 ### Day 13
+* Made a home, story and extra info page with text
+* Major code cleanup
