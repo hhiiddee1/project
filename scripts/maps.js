@@ -1,8 +1,8 @@
 // Name: Hidde van Oijen
 // Student Number: 12451096
 
-var legendNamesMap = ["Top 20% > 45%", "Top 20% = 40 - 45%", "Top 20% < 40%", "No info of 2015", "No info"]
-var colorMapLegend = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "red", "black"]
+var legendNamesMap = ["Top 20% > 45%", "Top 20% = 40 - 45%", "Top 20% < 40%", "No info of 2015", "No info"];
+var colorMapLegend = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "red", "black"];
 
 // function for making map
 function makeDataMap (countries, highest){
@@ -32,7 +32,7 @@ function makeDataMap (countries, highest){
                 var highestPercentage = highest[d.id]["2015"]
                 return "<strong>Country: </strong><span class='details'>" + d.properties.name + " <br></span>" +
                         "<strong>Top 20%: </strong><span class='details'>" + highestPercentage + "</span>"
-              })
+              });
 
   // makes width and height with margins
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
@@ -50,7 +50,7 @@ function makeDataMap (countries, highest){
               .attr("id", "mapsvg")
               .attr("width", width)
               .attr("height", height)
-              .append("g")
+              .append("g");
 
 // makes legend for map
 svg.selectAll("textlegend")
@@ -65,7 +65,7 @@ svg.selectAll("textlegend")
     })
     .attr("y", function(d, i) {
       return i * 20 + 263;
-    })
+    });
 
 svg.selectAll("rect")
     .data(legendNamesMap)
@@ -80,8 +80,8 @@ svg.selectAll("rect")
       return i * 20 + 250;
     })
     .style("fill", function(d, i){
-      return colorMapLegend[i]
-    })
+      return colorMapLegend[i];
+    });
 
 
   var projection = d3.geoMercator()
@@ -95,7 +95,7 @@ svg.selectAll("rect")
       .data(countries.features)
       .enter().append("path")
       .attr("class", "country")
-      .attr("d", path)
+      .attr("d", path);
 
   svg.call(tip);
 
@@ -109,12 +109,12 @@ svg.selectAll("rect")
       .attr("d", path)
       .style("fill", function(d){
         if (highest[d.id] == undefined){
-          return("black")
+          return ("black");
         }
         else if (highest[d.id]["2015"] == undefined){
-          return("red")
+          return ("red");
         }
-        return(color(highest[d.id]["2015"]));
+        return (color(highest[d.id]["2015"]));
       })
       .style("stroke", "white")
       .style("stroke-width", 1.5)
@@ -148,19 +148,19 @@ svg.selectAll("rect")
               .text("Piechart of " + d.properties.name + " in 2015")
             d3.selectAll("#headTextLineChart")
               .text(" Linechart of " + d.properties.name + " over the years")
-            countrySelected = d.id
-            countrySelectedName = d.properties.name
+            countrySelected = d.id;
+            countrySelectedName = d.properties.name;
             if (highest[countrySelected] == undefined){
-              makeNoInfo()
-              makeNoInfoLine()
+              makeNoInfo();
+              makeNoInfoLine();
             }
             else if (highest[countrySelected]["2015"] == undefined){
-              makeNoInfoYear()
-              makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+              makeNoInfoYear();
+              makeLineChart(data5, data4, data3, data2, data1, countrySelected);
             }
             else {
-              makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
-              makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+              makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015");
+              makeLineChart(data5, data4, data3, data2, data1, countrySelected);
             }
           });
 }

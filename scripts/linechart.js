@@ -87,7 +87,7 @@ svg3.selectAll("textlegend")
     })
     .attr("y", function(d, i) {
       return i * 20 + 163;
-    })
+    });
 
 // adds rectangles for legend
 svg3.selectAll("rect")
@@ -104,7 +104,7 @@ svg3.selectAll("rect")
     })
     .style("fill", function(d, i){
       return color[i]
-    })
+    });
 
 // function for making linechart
 function makeLineChart(data5, data4, data3, data2, data1, countryID){
@@ -112,79 +112,79 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
   // parses data for line and datapoints
 
   //selects data for dataset5
-  var dataLine5Parsed = []
+  var dataLine5Parsed = [];
 
   // selects country
-  dataLine5= data5[countryID]
+  dataLine5 = data5[countryID];
 
   // selects data of country
-  yearsData5 = Object.keys(dataLine5)
+  yearsData5 = Object.keys(dataLine5);
   for (i = 0; i < yearsData5.length; i++){
-    datacom = []
-    datacom.push(yearsData5[i])
-    datacom.push(dataLine5[yearsData5[i]])
-    dataLine5Parsed.push(datacom)
-  }
+    datacom = [];
+    datacom.push(yearsData5[i]);
+    datacom.push(dataLine5[yearsData5[i]]);
+    dataLine5Parsed.push(datacom);
+  };
 
   //selects data for dataset4
-  var dataLine4Parsed = []
+  var dataLine4Parsed = [];
 
   // selects country
-  dataLine4= data4[countryID]
+  dataLine4 = data4[countryID];
 
   // selects of country
-  yearsData4 = Object.keys(dataLine4)
+  yearsData4 = Object.keys(dataLine4);
   for (i = 0; i < yearsData4.length; i++){
-    datacom = []
-    datacom.push(yearsData4[i])
-    datacom.push(dataLine4[yearsData4[i]])
-    dataLine4Parsed.push(datacom)
-  }
+    datacom = [];
+    datacom.push(yearsData4[i]);
+    datacom.push(dataLine4[yearsData4[i]]);
+    dataLine4Parsed.push(datacom);
+  };
 
   //selects data for dataset3
-  var dataLine3Parsed = []
+  var dataLine3Parsed = [];
 
   // selects country
-  dataLine3= data3[countryID]
+  dataLine3 = data3[countryID];
 
   // selects of country
-  yearsData3 = Object.keys(dataLine3)
+  yearsData3 = Object.keys(dataLine3);
   for (i = 0; i < yearsData3.length; i++){
-    datacom = []
-    datacom.push(yearsData3[i])
-    datacom.push(dataLine3[yearsData3[i]])
-    dataLine3Parsed.push(datacom)
-  }
+    datacom = [];
+    datacom.push(yearsData3[i]);
+    datacom.push(dataLine3[yearsData3[i]]);
+    dataLine3Parsed.push(datacom);
+  };
 
   //selects data for dataset2
-  var dataLine2Parsed = []
+  var dataLine2Parsed = [];
 
   // selects country
-  dataLine2= data2[countryID]
+  dataLine2 = data2[countryID];
 
   // selects of country
-  yearsData2 = Object.keys(dataLine2)
+  yearsData2 = Object.keys(dataLine2);
   for (i = 0; i < yearsData2.length; i++){
-    datacom = []
-    datacom.push(yearsData2[i])
-    datacom.push(dataLine2[yearsData2[i]])
-    dataLine2Parsed.push(datacom)
-  }
+    datacom = [];
+    datacom.push(yearsData2[i]);
+    datacom.push(dataLine2[yearsData2[i]]);
+    dataLine2Parsed.push(datacom);
+  };
 
   // selects data for dataset1
-  var dataLine1Parsed = []
+  var dataLine1Parsed = [];
 
   // selects country
-  dataLine1= data1[countryID]
+  dataLine1 = data1[countryID];
 
   // selects of country
-  yearsData1 = Object.keys(dataLine1)
+  yearsData1 = Object.keys(dataLine1);
   for (i = 0; i < yearsData1.length; i++){
-    datacom = []
-    datacom.push(yearsData1[i])
-    datacom.push(dataLine1[yearsData1[i]])
-    dataLine1Parsed.push(datacom)
-  }
+    datacom = [];
+    datacom.push(yearsData1[i]);
+    datacom.push(dataLine1[yearsData1[i]]);
+    dataLine1Parsed.push(datacom);
+  };
 
 
   // makes line for data 5
@@ -428,12 +428,12 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
                .style("opacity", 0)
            d3.select(this).style("opacity", 1)
          });
-}
+};
 
 // function for making text when a country has no data
 function makeNoInfoLine(){
   svg3.append("text")
       .attr("id", "noInfo")
       .text("No info of this country")
-      .attr("transform", "translate(400, 200)")
-}
+      .attr("transform", "translate(400, 200)");
+};
