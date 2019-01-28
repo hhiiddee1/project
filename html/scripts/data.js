@@ -127,7 +127,4 @@ function makeSlider(){
 
   // calls sliderbutton to svg
   timeSliderSvg.call(sliderTime);
-
-  // sets year left to slider in begin state
-  d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
 }
