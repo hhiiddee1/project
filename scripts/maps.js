@@ -10,7 +10,7 @@ function makeDataMap (countries, highest){
 
   // Set tooltips
   var tip = d3.tip()
-              .attr('class', 'd3-tip')
+              .attr("class", "d3-tip")
               .offset([-10, 0])
               .style("position","absolute")
               .style("background","white")
@@ -45,10 +45,10 @@ function makeDataMap (countries, highest){
 
   var svg = d3.select("#map")
               .append("svg")
-              .attr('id', 'mapsvg')
+              .attr("id", "mapsvg")
               .attr("width", width)
               .attr("height", height)
-              .append('g')
+              .append("g")
 
 svg.selectAll("textlegend")
   .data(legendNamesMap)
@@ -112,20 +112,20 @@ svg.selectAll("rect")
         }
         return(color(highest[d.id]["2015"]));
       })
-      .style('stroke', 'white')
-      .style('stroke-width', 1.5)
+      .style("stroke", "white")
+      .style("stroke-width", 1.5)
       .style("opacity",0.8)
       // tooltips
         .style("stroke","white")
-        .style('stroke-width', 0.3)
-        .on('mouseover',function(d){
+        .style("stroke-width", 0.3)
+        .on("mouseover",function(d){
           tip.show(d);
             d3.select(this)
               .style("opacity", 1)
               .style("stroke","white")
               .style("stroke-width",3);
           })
-          .on('mouseout', function(d){
+          .on("mouseout", function(d){
             tip.hide(d);
 
             d3.select(this)

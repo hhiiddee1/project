@@ -94,36 +94,36 @@ function makeSlider(){
     .max(d3.max(dataTime))
     .step(1000 * 60 * 60 * 24 * 365)
     .width(500)
-    .tickFormat(d3.timeFormat('%Y'))
+    .tickFormat(d3.timeFormat("%Y"))
     .tickValues(dataTime)
     .default(new Date(2014, 16, 3))
-    .on('onchange', val => {
-      d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+    .on("onchange", val => {
+      d3.select("p#value-time").text(d3.timeFormat("%Y")(val));
       d3.selectAll(".arc").remove()
       d3.selectAll("#noInfo").remove()
       d3.selectAll("#headTextPieChart")
-        .text("Piechart of " + countrySelectedName + " in " + d3.timeFormat('%Y')(val))
+        .text("Piechart of " + countrySelectedName + " in " + d3.timeFormat("%Y")(val))
       if (data5[countrySelected] == undefined){
         makeNoInfo()
         makeNoInfoLine()
       }
-      else if (data5[countrySelected][d3.timeFormat('%Y')(val)] == undefined){
+      else if (data5[countrySelected][d3.timeFormat("%Y")(val)] == undefined){
         makeNoInfoYear()
       }
       else {
-        makePieChart(data5, data4, data3, data2, data1, countrySelected, d3.timeFormat('%Y')(val))
+        makePieChart(data5, data4, data3, data2, data1, countrySelected, d3.timeFormat("%Y")(val))
       }
     });
 
   // makes slider svg
   var timeSliderSvg = d3
-    .select('div#slider-time')
-    .append('svg')
+    .select("div#slider-time")
+    .append("svg")
     .attr("id", "slider")
-    .attr('width', 600)
-    .attr('height', 100)
-    .append('g')
-    .attr('transform', 'translate(30,30)');
+    .attr("width", 600)
+    .attr("height", 100)
+    .append("g")
+    .attr("transform", "translate(30,30)");
 
   // calls sliderbutton to svg
   timeSliderSvg.call(sliderTime);

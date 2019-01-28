@@ -20,10 +20,10 @@ var pie = d3.pie()
 
 var svg2 = d3.select("#pieChartSvg")
             .append("svg")
-            .attr('id', 'pieChart')
+            .attr("id", "pieChart")
             .attr("width", width)
             .attr("height", height)
-            .append('g')
+            .append("g")
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
 
 svg2.selectAll("textlegend")

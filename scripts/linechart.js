@@ -36,7 +36,7 @@ var svg3 = d3.select("#lineChartSvg")
               .append("svg")
               .attr("width", width)
               .attr("height", height)
-              .attr('class', 'linechart');
+              .attr("class", "linechart");
 
 // creates tooltip
 var tooltip = d3.select("#lineChartSvg").append("div")
