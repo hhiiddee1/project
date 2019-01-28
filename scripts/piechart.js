@@ -19,12 +19,12 @@ var pie = d3.pie()
             });
 
 var svg2 = d3.select("#pieChartSvg")
-            .append("svg")
-            .attr("id", "pieChart")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+              .append("svg")
+              .attr("id", "pieChart")
+              .attr("width", width)
+              .attr("height", height)
+              .append("g")
+              .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 svg2.selectAll("textlegend")
   .data(legendNames)
@@ -38,7 +38,7 @@ svg2.selectAll("textlegend")
   })
   .attr("y", function(d, i) {
     return i * 20 - 37;
-  })
+  });
 
 svg2.selectAll("rect")
     .data(legendNames)
@@ -54,20 +54,20 @@ svg2.selectAll("rect")
     })
     .style("fill", function(d, i){
       return color[i]
-    })
+    });
 
 function makePieChart(data5, data4, data3, data2, data1, countryID, year){
   dataPie = []
-  var data52015 = data5[countryID][year]
-  var data42015 = data4[countryID][year]
-  var data32015 = data3[countryID][year]
-  var data22015 = data2[countryID][year]
-  var data12015 = data1[countryID][year]
-  dataPie.push(data52015)
-  dataPie.push(data42015)
-  dataPie.push(data32015)
-  dataPie.push(data22015)
-  dataPie.push(data12015)
+  var data52015 = data5[countryID][year];
+  var data42015 = data4[countryID][year];
+  var data32015 = data3[countryID][year];
+  var data22015 = data2[countryID][year];
+  var data12015 = data1[countryID][year];
+  dataPie.push(data52015);
+  dataPie.push(data42015);
+  dataPie.push(data32015);
+  dataPie.push(data22015);
+  dataPie.push(data12015);
 
 
   var g = svg2.selectAll(".arc")
@@ -75,13 +75,13 @@ function makePieChart(data5, data4, data3, data2, data1, countryID, year){
               .data(pie(dataPie))
               .enter()
               .append("g")
-              .attr("class", "arc")
+              .attr("class", "arc");
 
   g.append("path")
-  .attr("d", arc)
-  .style("fill", function(d, i){
-    return color[i]
-  })
+    .attr("d", arc)
+    .style("fill", function(d, i){
+      return color[i]
+    });
 
   g.append("text")
     .attr("transform", function(d) {
@@ -92,14 +92,15 @@ function makePieChart(data5, data4, data3, data2, data1, countryID, year){
     .attr("text-anchor", "middle")
     .text(function(d, i){
       return dataPie[i] + "%";
-    })
-}
+    });
+};
 
 function makeNoInfo(){
+
   svg2.append("text")
       .attr("id", "noInfo")
       .text("No info of this country")
-      .attr("transform", "translate(-80, -70)")
+      .attr("transform", "translate(-80, -70)");
 }
 
 function makeNoInfoYear(){
@@ -107,4 +108,4 @@ function makeNoInfoYear(){
       .attr("id", "noInfo")
       .text("No info of this country in this year")
       .attr("transform", "translate(-100, -70)")
-}
+};

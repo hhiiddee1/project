@@ -200,40 +200,40 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
   // makes circels for data 5
   svg3.selectAll("circle5")
-     .data(dataLine5Parsed)
-     .enter()
-     .append("circle")
-     .attr("id", "dot")
-     .style("fill", color[0])
-     .attr("cx", function(d,i) {
-        return scaleXLine(d[0]-2000);
-     })
-     .attr("cy", function(d) {
-        return scaleY(d[1]);
-     })
-     .attr("r", function(d) {
-       return 5
-     })
-     .attr("transform", "translate(100, 50)")
-     // makes text appear when hovering over
-    .on("mouseover", function(d,i){
-      tooltip.transition()
-        .style("opacity", 1)
-
-        tooltip.html(d,i)
-          .text(d[1] + "%")
-          .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
-          .style("top",(scaleY(d[1]))+"px")
-          .style("border","2px " + color[0] + " solid")
-
-          d3.select(this).style("opacity", 1)
-      })
-      // makes text go away when hovering over
-      .on("mouseout", function(d){
+       .data(dataLine5Parsed)
+       .enter()
+       .append("circle")
+       .attr("id", "dot")
+       .style("fill", color[0])
+       .attr("cx", function(d,i) {
+          return scaleXLine(d[0]-2000);
+       })
+       .attr("cy", function(d) {
+          return scaleY(d[1]);
+       })
+       .attr("r", function(d) {
+         return 5
+       })
+       .attr("transform", "translate(100, 50)")
+       // makes text appear when hovering over
+      .on("mouseover", function(d,i){
         tooltip.transition()
-            .style("opacity", 0)
-        d3.select(this).style("opacity", 1)
-      });
+          .style("opacity", 1)
+
+          tooltip.html(d,i)
+            .text(d[1] + "%")
+            .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+            .style("top",(scaleY(d[1]))+"px")
+            .style("border","2px " + color[0] + " solid")
+
+            d3.select(this).style("opacity", 1)
+        })
+        // makes text go away when hovering over
+        .on("mouseout", function(d){
+          tooltip.transition()
+              .style("opacity", 0)
+          d3.select(this).style("opacity", 1)
+        });
 
 
   // makes line for data 4

@@ -3,12 +3,14 @@
 
 var legendNamesMap = ["Top 20% > 45%", "Top 20% = 40 - 45%", "Top 20% < 40%", "No info of 2015", "No info"]
 var colorMapLegend = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "red", "black"]
+
+// function for making map
 function makeDataMap (countries, highest){
 
   var format = d3.format(",");
 
 
-  // Set tooltips
+  // set tooltips
   var tip = d3.tip()
               .attr("class", "d3-tip")
               .offset([-10, 0])
@@ -50,19 +52,20 @@ function makeDataMap (countries, highest){
               .attr("height", height)
               .append("g")
 
+// makes legend for map
 svg.selectAll("textlegend")
-  .data(legendNamesMap)
-  .enter()
-  .append("text")
-  .text(function(d) {
-    return d;
-  })
-  .attr("x", function(d) {
-    return 60;
-  })
-  .attr("y", function(d, i) {
-    return i * 20 + 263;
-  })
+    .data(legendNamesMap)
+    .enter()
+    .append("text")
+    .text(function(d) {
+      return d;
+    })
+    .attr("x", function(d) {
+      return 60;
+    })
+    .attr("y", function(d, i) {
+      return i * 20 + 263;
+    })
 
 svg.selectAll("rect")
     .data(legendNamesMap)
@@ -83,25 +86,26 @@ svg.selectAll("rect")
 
   var projection = d3.geoMercator()
                      .scale(350)
-                    .translate( [width / 2 + 20, height + 210]);
+                     .translate( [width / 2 + 20, height + 210]);
 
   var path = d3.geoPath().projection(projection);
 
   // adds countries to svg
   svg.selectAll(".country")
-    .data(countries.features)
-    .enter().append("path")
-    .attr("class", "country")
-    .attr("d", path)
+      .data(countries.features)
+      .enter().append("path")
+      .attr("class", "country")
+      .attr("d", path)
 
   svg.call(tip);
 
   // adds click on mouseover functions and some styling
   svg.append("g")
       .attr("class", "countries")
-    .selectAll("path")
+      .selectAll("path")
       .data(countries.features)
-    .enter().append("path")
+      .enter()
+      .append("path")
       .attr("d", path)
       .style("fill", function(d){
         if (highest[d.id] == undefined){
@@ -155,8 +159,8 @@ svg.selectAll("rect")
               makeLineChart(data5, data4, data3, data2, data1, countrySelected)
             }
             else {
-            makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
-            makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+              makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
+              makeLineChart(data5, data4, data3, data2, data1, countrySelected)
             }
           });
 }

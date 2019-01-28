@@ -2,16 +2,15 @@
 // Student Number: 12451096
 
 // collects all data
-var world ="https://raw.githubusercontent.com/hhiiddee1/project/master/json/world_countries.json"
-var five = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/5th_20%25(highest).json"
-var four = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/4th_20%25.json"
-var three = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/3rd_20%25.json"
-var two = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/2nd_20%25.json"
-var one = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/1st_20%25(lowest).json"
-var countrySelected = "AUT"
-var countrySelectedName = "Austria"
-var ned = []
-var color = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "rgb(198,219,239)","rgb(222,235,247)"]
+var world ="https://raw.githubusercontent.com/hhiiddee1/project/master/json/world_countries.json";
+var five = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/5th_20%25(highest).json";
+var four = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/4th_20%25.json";
+var three = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/3rd_20%25.json";
+var two = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/2nd_20%25.json";
+var one = "https://raw.githubusercontent.com/hhiiddee1/project/master/json/1st_20%25(lowest).json";
+var countrySelected = "AUT";
+var countrySelectedName = "Austria";
+var color = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "rgb(198,219,239)","rgb(222,235,247)"];
 
 var dataTime = d3.range(0, 16).map(function(d) {
 return new Date(1999 + d, 16, 16);
@@ -21,18 +20,18 @@ return new Date(1999 + d, 16, 16);
 window.onload = function() {
   var requests = [d3.json(world), d3.json(five), d3.json(four), d3.json(three), d3.json(two), d3.json(one)]
   Promise.all(requests).then(function(d){
-    world = d[0]
-    data5 = d[1]
-    data4 = d[2]
-    data3 = d[3]
-    data2 = d[4]
-    data1 = d[5]
+    world = d[0];
+    data5 = d[1];
+    data4 = d[2];
+    data3 = d[3];
+    data2 = d[4];
+    data1 = d[5];
 
     // makes pie chart
-    makePieChart(data5, data4, data3, data2, data1, "AUT", "2015")
+    makePieChart(data5, data4, data3, data2, data1, "AUT", "2015");
 
     // makes linechart
-    makeLineChart(data5, data4, data3, data2, data1, "AUT")
+    makeLineChart(data5, data4, data3, data2, data1, "AUT");
 
     // makes datamap
     makeDataMap(world, data5);
@@ -46,38 +45,40 @@ window.onload = function() {
         countrySelectedName = this.innerHTML;
 
         // deletes all old elements
-        d3.selectAll("#dot").remove()
-        d3.selectAll("#line").remove()
-        d3.selectAll(".arc").remove()
-        d3.selectAll("#noInfo").remove()
-        d3.selectAll("#slider").remove()
+        d3.selectAll("#dot").remove();
+        d3.selectAll("#line").remove();
+        d3.selectAll(".arc").remove();
+        d3.selectAll("#noInfo").remove();
+        d3.selectAll("#slider").remove();
 
         // makes new head texts
         d3.selectAll("#headTextPieChart")
-          .text("Piechart of " + countrySelectedName + " in 2015")
+          .text("Piechart of " + countrySelectedName + " in 2015");
+
         d3.selectAll("#headTextLineChart")
-          .text(" Linechart of " + countrySelectedName + " over the years")
+          .text(" Linechart of " + countrySelectedName + " over the years");
 
         // makes new slider
-        makeSlider()
+        makeSlider();
 
         //selects right country state and adds new elements
         if (data5[countrySelected] == undefined){
-          makeNoInfo()
-          makeNoInfoLine()
+          makeNoInfo();
+          makeNoInfoLine();
         }
         else if (data5[countrySelected]["2015"] == undefined){
-          makeNoInfoYear()
-          makeLineChart(data5, data4, data3, data2, data1, countrySelected)
+          makeNoInfoYear();
+          makeLineChart(data5, data4, data3, data2, data1, countrySelected);
         }
         else{
-          makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015")
-          makeLineChart(data5, data4, data3, data2, data1, countrySelected)
-        }
+          makePieChart(data5, data4, data3, data2, data1, countrySelected, "2015");
+          makeLineChart(data5, data4, data3, data2, data1, countrySelected);
+        };
       });
 
     // makes slider for begin state
-    makeSlider()
+    makeSlider();
+
   }).catch(function(e){
     throw(e);
   });
@@ -99,31 +100,30 @@ function makeSlider(){
     .default(new Date(2014, 16, 3))
     .on("onchange", val => {
       d3.select("p#value-time").text(d3.timeFormat("%Y")(val));
-      d3.selectAll(".arc").remove()
-      d3.selectAll("#noInfo").remove()
+      d3.selectAll(".arc").remove();
+      d3.selectAll("#noInfo").remove();
       d3.selectAll("#headTextPieChart")
-        .text("Piechart of " + countrySelectedName + " in " + d3.timeFormat("%Y")(val))
+        .text("Piechart of " + countrySelectedName + " in " + d3.timeFormat("%Y")(val));
       if (data5[countrySelected] == undefined){
-        makeNoInfo()
-        makeNoInfoLine()
+        makeNoInfo();
+        makeNoInfoLine();
       }
       else if (data5[countrySelected][d3.timeFormat("%Y")(val)] == undefined){
-        makeNoInfoYear()
+        makeNoInfoYear();
       }
       else {
-        makePieChart(data5, data4, data3, data2, data1, countrySelected, d3.timeFormat("%Y")(val))
+        makePieChart(data5, data4, data3, data2, data1, countrySelected, d3.timeFormat("%Y")(val));
       }
     });
 
   // makes slider svg
-  var timeSliderSvg = d3
-    .select("div#slider-time")
-    .append("svg")
-    .attr("id", "slider")
-    .attr("width", 600)
-    .attr("height", 100)
-    .append("g")
-    .attr("transform", "translate(30,30)");
+  var timeSliderSvg = d3.select("div#slider-time")
+                        .append("svg")
+                        .attr("id", "slider")
+                        .attr("width", 600)
+                        .attr("height", 100)
+                        .append("g")
+                        .attr("transform", "translate(30,30)");
 
   // calls sliderbutton to svg
   timeSliderSvg.call(sliderTime);
