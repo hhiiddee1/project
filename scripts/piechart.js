@@ -29,7 +29,7 @@ var svg2 = d3.select("#pieChartSvg")
 svg2.append("text")
     .text("percentage of income of all income by")
     .attr("x",-100)
-    .attr("x",-200);
+    .attr("y",-200);
 
 svg2.selectAll("textlegend")
   .data(legendNames)
