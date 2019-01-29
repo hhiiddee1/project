@@ -52,6 +52,15 @@ function makeDataMap (countries, highest){
               .attr("height", height)
               .append("g");
 
+svg..append("text")
+    .text("percentage of income of all income by")
+    .attr("x", function(d) {
+      return 30;
+    })
+    .attr("y", function(d, i) {
+      return 233;
+    });
+
 // makes legend for map
 svg.selectAll("textlegend")
     .data(legendNamesMap)
