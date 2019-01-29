@@ -5,7 +5,7 @@ var legendNames = ["Highest 20%", "4th 20%", "3rd 20%", "2nd 20%", "Lowest 20%"]
 
 // makes margin, width and height
 var margin = {top: 0, right: 0, bottom: 0, left: 0}
-var width = 1200
+var width = 1100
 var height = 500
 var marginTop = 50
 var marginBottom = 150
