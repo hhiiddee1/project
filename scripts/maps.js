@@ -52,14 +52,6 @@ function makeDataMap (countries, highest){
               .attr("height", height)
               .append("g");
 
-  svg.append("text")
-      .text("percentage of income of all income by")
-      .attr("transform", "rotate(-90)")
-      .style("background","white")
-      .style("padding","5 10px")
-      .attr("x", -400)
-      .attr("y", 10);
-
 // makes legend for map
 svg.selectAll("textlegend")
     .data(legendNamesMap)
@@ -171,4 +163,12 @@ svg.selectAll("rect")
               makeLineChart(data5, data4, data3, data2, data1, countrySelected);
             }
           });
+
+  svg.append("text")
+      .text("percentage of income of all income by")
+      .attr("transform", "rotate(-90)")
+      .style("background","white")
+      .style("padding","5 10px")
+      .attr("x", -400)
+      .attr("y", 10);
 }
