@@ -7,6 +7,9 @@ var legendNames = ["Highest 20%", "4th 20%", "3rd 20%", "2nd 20%", "Lowest 20%"]
 var margin = {top: 0, right: 0, bottom: 0, left: 0}
 var width = 1200
 var height = 500
+var marginTop = 50
+var marginBottom = 150
+var marginLeft = 100
 var padding = 5;
 
 
@@ -45,18 +48,18 @@ var tooltip = d3.select("#lineChartSvg").append("div")
                 .style("padding","5 10px")
                 .style("border-radius","5px")
                 .style("opacity","0")
-                .attr("transform", "translate(100, 50)");
+                .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")");
 
 // create Y axis
 svg3.append("g")
     .attr("class", "yAxis")
-    .attr("transform", "translate(100, 50)")
+    .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")")
     .call(d3.axisLeft(scaleY));
 
 // create X axis
 svg3.append("g")
     .attr("class", "xAxis")
-    .attr("transform", "translate(100, 350)")
+    .attr("transform", "translate(" + marginLeft + ", " + height - marginBottom + ")")
     .call(d3.axisBottom(scaleX));
 
 // makes text for Y axis
@@ -195,7 +198,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
       .attr("id", "line")
       .style("stroke", color[0])
       .style("stroke-width", 3)
-      .attr("transform", "translate(100, 50)");
+      .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")");
 
 
   // makes circels for data 5
@@ -214,7 +217,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
        .attr("r", function(d) {
          return 5
        })
-       .attr("transform", "translate(100, 50)")
+       .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")")
        // makes text appear when hovering over
       .on("mouseover", function(d,i){
         tooltip.transition()
@@ -222,7 +225,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
           tooltip.html(d,i)
             .text(d[1] + "%")
-            .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+            .style("left", (scaleXLine(d[0]-2000) + marginLeft)+"px")
             .style("top",(scaleY(d[1]))+"px")
             .style("border","2px " + color[0] + " solid")
 
@@ -244,7 +247,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
       .attr("id", "line")
       .style("stroke", color[1])
       .style("stroke-width", 3)
-      .attr("transform", "translate(100, 50)");
+      .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")");
 
 
   // makes circels for data 4
@@ -263,7 +266,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
        .attr("r", function(d) {
          return 5
        })
-       .attr("transform", "translate(100, 50)")
+       .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")")
       // makes text appear when hovering over
        .on("mouseover", function(d,i){
          tooltip.transition()
@@ -271,7 +274,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
          tooltip.html(d,i)
            .text(d[1] + "%")
-           .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+           .style("left", (scaleXLine(d[0]-2000) + marginLeft)+"px")
            .style("top",(scaleY(d[1]))+"px")
            .style("border","2px " + color[1] + " solid")
 
@@ -293,7 +296,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
       .attr("id", "line")
       .style("stroke", color[2])
       .style("stroke-width", 3)
-      .attr("transform", "translate(100, 50)");
+      .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")");
 
 
   // makes circels for data 3
@@ -312,7 +315,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
        .attr("r", function(d) {
          return 5
        })
-       .attr("transform", "translate(100, 50)")
+       .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")")
        // makes text appear when hovering over
       .on("mouseover", function(d,i){
         tooltip.transition()
@@ -320,7 +323,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
           tooltip.html(d,i)
             .text(d[1] + "%")
-            .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+            .style("left", (scaleXLine(d[0]-2000) + marginLeft)+"px")
             .style("top",(scaleY(d[1]))+"px")
             .style("border","2px " + color[2] + " solid")
 
@@ -341,7 +344,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
        .attr("id", "line")
        .style("stroke", color[3])
        .style("stroke-width", 3)
-       .attr("transform", "translate(100, 50)");
+       .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")");
 
 
    // makes circels for data 2
@@ -360,7 +363,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
         .attr("r", function(d) {
           return 5
         })
-        .attr("transform", "translate(100, 50)")
+        .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")")
         // makes text appear when hovering over
        .on("mouseover", function(d,i){
          tooltip.transition()
@@ -368,7 +371,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
            tooltip.html(d,i)
              .text(d[1] + "%")
-             .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+             .style("left", (scaleXLine(d[0]-2000) + marginLeft)+"px")
              .style("top",(scaleY(d[1]))+"px")
              .style("border","2px " + color[3] + " solid")
 
@@ -389,7 +392,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
        .attr("id", "line")
        .style("stroke", color[4])
        .style("stroke-width", 3)
-       .attr("transform", "translate(100, 50)");
+       .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")");
 
 
    // makes circels for data 1
@@ -408,7 +411,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
         .attr("r", function(d) {
           return 5
         })
-        .attr("transform", "translate(100, 50)")
+        .attr("transform", "translate(" + marginLeft + ", " + marginTop + ")")
         // makes text appear when hovering over
        .on("mouseover", function(d,i){
          tooltip.transition()
@@ -416,7 +419,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
            tooltip.html(d,i)
              .text(d[1] + "%")
-             .style("left", (scaleXLine(d[0]-2000) + 100)+"px")
+             .style("left", (scaleXLine(d[0]-2000) + marginLeft)+"px")
              .style("top",(scaleY(d[1]))+"px")
              .style("border","2px " + color[4] + " solid")
 
