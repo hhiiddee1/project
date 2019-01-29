@@ -50,3 +50,11 @@ Student number: 12451096 */
   margin-left: 0px;
   margin-right: 0px;
 }
+
+.col-sm-6 {
+  margin-left: 0px;
+}
+
+.col-sm-12 {
+  margin-left: 0px;
+}
