@@ -64,7 +64,7 @@ svg3.append("g")
 
 // makes text for Y axis
 svg3.append("text")
-    .text("Income % of total income held by different income groups")
+    .text("Income % of total income by")
     .attr("transform", "rotate(-90)")
     .attr("x", -350)
     .attr("y", 50)
