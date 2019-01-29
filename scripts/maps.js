@@ -57,7 +57,7 @@ function makeDataMap (countries, highest){
       .attr("transform", "rotate(-90)")
       // .style("fill", "white")
       .attr("x", -400)
-      .attr("y", 10);
+      .attr("y", 20);
 
 // makes legend for map
 svg.selectAll("textlegend")
