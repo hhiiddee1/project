@@ -225,7 +225,7 @@ function makeLineChart(data5, data4, data3, data2, data1, countryID){
 
           tooltip.html(d,i)
             .text(d[1] + "%")
-            .style("left", (scaleXLine(d[0]-2000) + marginLeft)+"px")
+            .style("left", (scaleXLine(d[0]-2000) + marginLeft + 100)+"px")
             .style("top",(scaleY(d[1]))+"px")
             .style("border","2px " + color[0] + " solid")
 
