@@ -52,7 +52,7 @@ function makeDataMap (countries, highest){
               .attr("height", height)
               .append("g");
 
-svg..append("text")
+svg.append("text")
     .text("percentage of income of all income by")
     .attr("x", function(d) {
       return 30;
