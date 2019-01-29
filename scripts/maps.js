@@ -55,6 +55,7 @@ function makeDataMap (countries, highest){
   svg.append("text")
       .text("percentage of income of all income by")
       .attr("transform", "rotate(-90)")
+      .style("fill", "white")
       .attr("x", -400)
       .attr("y", 10);
 
