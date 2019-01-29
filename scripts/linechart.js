@@ -59,7 +59,7 @@ svg3.append("g")
 // create X axis
 svg3.append("g")
     .attr("class", "xAxis")
-    .attr("transform", "translate(" + marginLeft + ", " + height - marginBottom + ")")
+    .attr("transform", "translate(" + marginLeft + ", " + (height - marginBottom) + ")")
     .call(d3.axisBottom(scaleX));
 
 // makes text for Y axis
