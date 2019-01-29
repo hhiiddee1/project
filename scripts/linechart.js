@@ -66,7 +66,7 @@ svg3.append("g")
 svg3.append("text")
     .text("Income % of total income by")
     .attr("transform", "rotate(-90)")
-    .attr("x", -330)
+    .attr("x", -300)
     .attr("y", 50)
     .attr("font-weight","bold");
 
