@@ -52,36 +52,43 @@ function makeDataMap (countries, highest){
               .attr("height", height)
               .append("g");
 
-// makes legend for map
-svg.selectAll("textlegend")
-    .data(legendNamesMap)
-    .enter()
-    .append("text")
-    .text(function(d) {
-      return d;
-    })
-    .attr("x", function(d) {
-      return 60;
-    })
-    .attr("y", function(d, i) {
-      return i * 20 + 263;
-    });
 
-svg.selectAll("rect")
-    .data(legendNamesMap)
-    .enter()
-    .append("rect")
-    .attr("width", 20 )
-    .attr("height", 20 - padding)
-    .attr("x", function(d) {
-      return 30;
-    })
-    .attr("y", function(d, i) {
-      return i * 20 + 250;
-    })
-    .style("fill", function(d, i){
-      return colorMapLegend[i];
-    });
+  svg.append("text")
+      .text("percentage of income of all income by")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -400)
+      .attr("y", 20);
+
+  // makes legend for map
+  svg.selectAll("textlegend")
+      .data(legendNamesMap)
+      .enter()
+      .append("text")
+      .text(function(d) {
+        return d;
+      })
+      .attr("x", function(d) {
+        return 60;
+      })
+      .attr("y", function(d, i) {
+        return i * 20 + 263;
+      });
+
+  svg.selectAll("rect")
+      .data(legendNamesMap)
+      .enter()
+      .append("rect")
+      .attr("width", 20 )
+      .attr("height", 20 - padding)
+      .attr("x", function(d) {
+        return 30;
+      })
+      .attr("y", function(d, i) {
+        return i * 20 + 250;
+      })
+      .style("fill", function(d, i){
+        return colorMapLegend[i];
+      });
 
 
   var projection = d3.geoMercator()
@@ -163,12 +170,4 @@ svg.selectAll("rect")
               makeLineChart(data5, data4, data3, data2, data1, countrySelected);
             }
           });
-
-  svg.append("text")
-      .text("percentage of income of all income by")
-      .attr("transform", "rotate(-90)")
-      .style("background","white")
-      .style("padding","5 10px")
-      .attr("x", -400)
-      .attr("y", 10);
 }
