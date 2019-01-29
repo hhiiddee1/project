@@ -10,8 +10,8 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
 var padding = 5;
 
 var arc = d3.arc()
-            .outerRadius(radius - 10)
-            .innerRadius(radius - 80);
+            .outerRadius(radius - 30)
+            .innerRadius(radius - 100);
 
 var pie = d3.pie()
             .value(function(d){
@@ -30,9 +30,6 @@ svg2.append("text")
     .text("percentage of income of all income by")
     .attr("x", function(d) {
       return -60;
-    })
-    .attr("y", function(d, i) {
-      return -80;
     });
 
 svg2.selectAll("textlegend")
