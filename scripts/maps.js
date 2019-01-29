@@ -56,7 +56,7 @@ function makeDataMap (countries, highest){
       .text("percentage of income of all income by")
       .attr("transform", "rotate(-90)")
       .style("background","white")
-        .style("padding","5 10px")
+      .style("padding","5 10px")
       .attr("x", -400)
       .attr("y", 10);
 
