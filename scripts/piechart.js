@@ -11,7 +11,7 @@ var padding = 5;
 
 var arc = d3.arc()
             .outerRadius(radius - 10)
-            .innerRadius(radius - 100);
+            .innerRadius(radius - 80);
 
 var pie = d3.pie()
             .value(function(d){
@@ -25,6 +25,15 @@ var svg2 = d3.select("#pieChartSvg")
               .attr("height", height)
               .append("g")
               .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+svg2.append("text")
+    .text("percentage of income of all income by")
+    .attr("x", function(d) {
+      return -60;
+    })
+    .attr("y", function(d, i) {
+      return -80;
+    });
 
 svg2.selectAll("textlegend")
   .data(legendNames)

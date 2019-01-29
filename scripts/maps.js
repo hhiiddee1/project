@@ -1,7 +1,7 @@
 // Name: Hidde van Oijen
 // Student Number: 12451096
 
-var legendNamesMap = ["Top 20% > 45%", "Top 20% = 40 - 45%", "Top 20% < 40%", "No info of 2015", "No info"];
+var legendNamesMap = ["Highest 20% > 45%", "Highest 20% = 40 - 45%", "Highest 20% < 40%", "No info of 2015", "No info"];
 var colorMapLegend = ["rgb(66,146,198)", "rgb(107,174,214)", "rgb(158,202,225)", "red", "black"];
 
 // function for making map
@@ -52,14 +52,14 @@ function makeDataMap (countries, highest){
               .attr("height", height)
               .append("g");
 
-svg.append("text")
-    .text("percentage of income of all income by")
-    .attr("x", function(d) {
-      return 30;
-    })
-    .attr("y", function(d, i) {
-      return 233;
-    });
+  svg.append("text")
+      .text("percentage of income of all income by")
+      .attr("x", function(d) {
+        return 30;
+      })
+      .attr("y", function(d, i) {
+        return 233;
+      });
 
 // makes legend for map
 svg.selectAll("textlegend")
