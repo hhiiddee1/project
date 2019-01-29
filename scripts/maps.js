@@ -56,7 +56,7 @@ function makeDataMap (countries, highest){
       .text("percentage of income of all income by")
       .attr("transform", "rotate(-90)")
       .attr("x", -350)
-      .attr("y", 30);
+      .attr("y", 10);
 
 // makes legend for map
 svg.selectAll("textlegend")
