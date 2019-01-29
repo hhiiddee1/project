@@ -29,6 +29,7 @@ var svg2 = d3.select("#pieChartSvg")
 svg2.append("text")
     .text("percentage of income of all income by")
     .style("background","white")
+    .style("padding","5 10px")
     .attr("x",-130)
     .attr("y",-185);
 
