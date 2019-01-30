@@ -13,8 +13,34 @@ http://www.welingelichtekringen.nl/economie/821356/inkomensongelijkheid-in-neder
 https://www.armoedefonds.nl
 
 ### Website pages:
+#### Homepage
 This is what the homepage looks like
+
 ![homepage](https://user-images.githubusercontent.com/1015496/51982566-ab59e380-2496-11e9-8e71-a70f31b2b416.png)
+
+#### Visualisation
+Here you see the upper side of the visualisation. There is a map of europe and a piechart.
+If you hover over the map you can see the data of the highest 20% earners. The piechart
+can be changed by clicking on the map or in the dorpdown in the navbar.
+
+![visualisatie1](https://user-images.githubusercontent.com/1015496/51986386-6cc92680-24a0-11e9-99d2-eeccc5e23736.png)
+
+In the lower side of the visualisation you can see a slider and a linechart. With the
+slider you can select the year of the piechart. The linechart can be changed with the
+map or the dropdown in the navbar.
+
+![visualisation2](https://user-images.githubusercontent.com/1015496/51986772-42c43400-24a1-11e9-800e-d53516354ea3.png)
+
+#### Story
+Here is a short description what the visualisation does and why i made it.
+
+![story](https://user-images.githubusercontent.com/1015496/51986857-77d08680-24a1-11e9-8902-1ee35ef891df.png)
+
+
+#### Extra info
+On this page there is some info about me and data & tools i used to create the site.
+
+![extrainfo](https://user-images.githubusercontent.com/1015496/51987128-0d6c1600-24a2-11e9-91f5-6eb3e64a5557.png)
 
 ### Solution:
 a visualization of income inequality of europe.
