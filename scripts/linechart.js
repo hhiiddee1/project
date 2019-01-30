@@ -85,9 +85,7 @@ svg3.selectAll("textlegend")
     .text(function(d) {
       return d;
     })
-    .attr("x", function(d) {
-      return 980;
-    })
+    .attr("x", 980)
     .attr("y", function(d, i) {
       return i * 20 + 163;
     });
@@ -99,9 +97,7 @@ svg3.selectAll("rect")
     .append("rect")
     .attr("width", 20 )
     .attr("height", 20 - padding)
-    .attr("x", function(d) {
-      return 950;
-    })
+    .attr("x", 950)
     .attr("y", function(d, i) {
       return i * 20 + 150;
     })

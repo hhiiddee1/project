@@ -1,3 +1,7 @@
+Hidde van Oijen
+
+12451096
+
 ### Day 1
 * Made html page
 * Made svg's
@@ -52,3 +56,10 @@
 ### Day 13
 * Made a home, story and extra info page with text
 * Major code cleanup
+
+### Day 14
+* Code cleanup complete
+* Last bug fixes
+
+### Day 15
+* Repository complete

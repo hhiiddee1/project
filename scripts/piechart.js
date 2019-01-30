@@ -38,9 +38,7 @@ svg2.selectAll("textlegend")
   .text(function(d) {
     return d;
   })
-  .attr("x", function(d) {
-    return -30;
-  })
+  .attr("x", -30)
   .attr("y", function(d, i) {
     return i * 20 - 37;
   });
@@ -51,9 +49,7 @@ svg2.selectAll("rect")
     .append("rect")
     .attr("width", 20 )
     .attr("height", 20 - padding)
-    .attr("x", function(d) {
-      return -60;
-    })
+    .attr("x", -60)
     .attr("y", function(d, i) {
       return i * 20 - 50;
     })
