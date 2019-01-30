@@ -21,10 +21,17 @@ There were multiple challanges that I encountered when i made the visualisations
 
 The map was a element i made in a earlier assignment. But the map was made with a earlier version of D3. There was a lot of difference in the two version. This resulted that i needed to rediscover how to make the datamap. when i got the hang of it and saw the new way of inplementation, made it easier.
 
-The Piechart I never made before. It to explore the way of implementation of it. after that it was not very difficult.
+The Piechart I never made before. It to explore the way of implementation of it. after that it was not very difficult. At first I wanted to make a Piechart without hole. But I changed it and is now more of a donut chart.
 
 The linechart I also made earlier. The difference was that this is a multiple linechart instead of a single linechart. But this was also not very difficult to implement.
 
 The most difficult i had was with sending, selecting and loading of the the right data. I had many difficulties with loading the data into the linechart and the piechart. This was because i wanted to load them in with dictionaries. When i couldn't get it done, I switched to lists. I was also struggeling with the slider to hold the data of the right country. I solved it with making a global variable of the last selected country.
 
 ## Decisions
+I made a couple of important decisions during the project.
+
+The first important decision in the project is to let go of the click on function in the linechart. This function would allow the user to select a year for the piechart by clicking on a year in the linechart. I replaced this function with a slider under the linechart. The reason for this change was because i found it more logical and easier to use.
+
+The second decision I made was to let go of the update function. The update would make the transition of the piechart and linechart smoother. The update function took very long to implement and I didn´t get a perfect transition. This meant the transition was buggy and not very smooth. I now replace the data with a remove of the old charts and making new charts. The transition of the is not as smooth as a update function could have been, but it´s better than my old update function. Most of the data doesn´t differentiate very much. Because of this the transition isn´t very disturbing.
+
+Another change I made was make the Piechart, a donut chart. I did this because it gave me a lot more space for the legend. The data is still in the piechart is still very seperatable and
