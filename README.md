@@ -100,5 +100,9 @@ https://jquery.com/
 
 Python
 
+### images
+Home page image: https://www.youtube.com/watch?v=d1pnLgW28Fo
+Favicon: https://www.freefavicon.com/freefavicons/business/iconinfo/money-wads-152-170057.html
+
 ### Site:
 https://hhiiddee1.github.io/project/home.html
