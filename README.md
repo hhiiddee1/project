@@ -12,6 +12,10 @@ Sources:
 http://www.welingelichtekringen.nl/economie/821356/inkomensongelijkheid-in-nederland-extreem-hoog.html
 https://www.armoedefonds.nl
 
+### Website pages:
+This is what the homepage looks like
+![homepage](https://user-images.githubusercontent.com/1015496/51982566-ab59e380-2496-11e9-8e71-a70f31b2b416.png)
+
 ### Solution:
 a visualization of income inequality of europe.
 
