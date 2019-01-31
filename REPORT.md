@@ -1,4 +1,4 @@
-bar chart# Report
+# Report
 
 ## Description
 The site makes a visualisation of the income inequality of Europe over different years. The visualisation makes a it possible for the user to get a good perspective on income inequality of Europe based on facts. The image bellow gives a good overview what the visualisation page looks like. I zoomed it out and is not as good looking as on the site, but I did this because now all the elements are on the same image and the overview is better than if it wasn't zoomed out.
@@ -7,9 +7,18 @@ The site makes a visualisation of the income inequality of Europe over different
 
 ## Technical design
 ### Visualisations
-There are three visualisations on the visualisation page. The first is a map that shows an overview of the highest 20% income group of a country. The bluer the colour the more the highest 20% earns of the total earnings. By hovering over a country, the data of the highest 20% of that country in the year 2015 is shown. The second is a bar chart that shows the percentage of income of all income groups over the years of one country. Austria is shown here when the page is loaded. Afterwards you can change the country by clicking a country on the map or selecting a country in the dropdown menu on the navigation bar. By hovering over one of the circles in a line the data of that datapoint is shown. The last is a pie chart that shows the percentage of income of all income groups of one country in a year. The data of Austria is also shown here when loaded. Other countries can also be selected by clicking on the map or selecting a country in dropdown menu on the navigation bar. This means that both the line chart and the pie chart show the data of the same country. The year of the pie chart can be changed by sliding the slider to the chosen year.
+There are three visualisations on the visualisation page. The first is a map that shows an overview of the highest 20% income group of a country. The bluer the colour the more the highest 20% earns of the total earnings. By hovering over a country, the data of the highest 20% of that country in the year 2015 is shown. The second is a line chart that shows the percentage of income of all income groups over the years of one country. Austria is shown here when the page is loaded. Afterwards you can change the country by clicking a country on the map or selecting a country in the dropdown menu on the navigation bar. By hovering over one of the circles in a line the data of that datapoint is shown. The last is a pie chart that shows the percentage of income of all income groups of one country in a year. The data of Austria is also shown here when loaded. Other countries can also be selected by clicking on the map or selecting a country in dropdown menu on the navigation bar. This means that both the line chart and the pie chart show the data of the same country. The year of the pie chart can be changed by sliding the slider to the chosen year.
 
-### data
+### Files and functions
+I made 4 JavaScript files. One is a file where data is loaded and with some general functions. The three other files are each for one visualisation. In these files the svg and some general elements are created. After this there are the functions for the elements with data.
+
+The data file is the most important file. From here all the data is loaded and is send through to the other JavaScripts files.
+
+The map is one big function that makes the map. When the map is made, no new data is needed to load in.
+
+The pie and line chart are created from the data and maps file. First the old data elements get deleted and after this the new data get sent through.
+
+### Data
 There are 5 data sets that are shown in the different visualisations. Each dataset contains the data of a different income group. The income groups go from the highest to the lowest 20%. That's why there are 5 datasets. Each dataset contains a dictionary of countries and in the countries is a dictionary of years.
 
 The data in the map contains of one dataset. This dataset is the highest 20% dataset. The data in the country is selected by selecting the country in the dataset and then selecting 2015.
@@ -34,7 +43,7 @@ The dropdown menu I first placed outside of the navigation bar. Later I placed i
 ## Decisions
 I made a couple of important decisions during the project.
 
-The first important decision in the project is to let go of the click on function in the line chart. This function would allow the user to select a year for the pie chart by clicking on a year in the line chart. I replaced this function with a slider under the line chart. The reason for this change was because i found it more logical and easier to use.
+The first important decision in the project is to let go of the click on function in the line chart. This function would allow the user to select a year for the pie chart by clicking on a year in the line chart. I replaced this function with a slider under the line chart. The reason for this change was because I found it more logical and easier to use.
 
 The second decision I made was to let go of the update function. The update would make the transition of the pie chart and line chart smoother. The update function took very long to implement and I didn´t get a perfect transition. This meant the transition was buggy and not very smooth. I now replace the data with a remove of the old charts and making new charts. The transition of the is not as smooth as an update function could have been, but it´s better than my old update function. Most of the data doesn´t differentiate very much. Because of this the transition isn´t very disturbing.
 
